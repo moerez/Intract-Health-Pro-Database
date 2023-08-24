@@ -1,0 +1,121 @@
+@model InteractHealthProDatabase.Models.Psychotherapy
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Psychotherapy</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Stressed)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Stressed)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Sad)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Sad)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.NervousDepressed)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NervousDepressed)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Irritable)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Irritable)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Restless)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Restless)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.SleepTrouble)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.SleepTrouble)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Flashbacks)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Flashbacks)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Nightmares)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Nightmares)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.MemoryProblems)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.MemoryProblems)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.AfraidDriving)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.AfraidDriving)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.AfraidPassenger)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.AfraidPassenger)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.RelationshipsAffected)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.RelationshipsAffected)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DifficultyWActivities)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DifficultyWActivities)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.LowEnergy)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.LowEnergy)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Apathy)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Apathy)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Avoidance)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Avoidance)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Other)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Other)
+        </dd>
+        
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
