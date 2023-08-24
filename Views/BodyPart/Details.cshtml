@@ -1,0 +1,474 @@
+@model InteractHealthProDatabase.Models.BodyPart
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>BodyPart</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Concussion)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Concussion)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Fracture)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Fracture)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DiscHerniation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DiscHerniation)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.GeneralNotes)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.GeneralNotes)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.HeadR)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.HeadR)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.HeadL)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.HeadL)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.HeadF)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.HeadF)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.HeadB)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.HeadB)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.FaceR)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.FaceR)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.FaceL)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.FaceL)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Jaw)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Jaw)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Teeth)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Teeth)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.HeadNotes)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.HeadNotes)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Neck)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Neck)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.UpBack)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.UpBack)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.UpBackR)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.UpBackR)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.UpBackL)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.UpBackL)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.MidBack)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.MidBack)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.MidBackR)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.MidBackR)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.MidBackL)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.MidBackL)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.LowBack)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.LowBack)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.LowBackR)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.LowBackR)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.LowBackL)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.LowBackL)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ShoulderR)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ShoulderR)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ShoulderL)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ShoulderL)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.NeckAndBackNotes)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.NeckAndBackNotes)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.UpArmR)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.UpArmR)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.UpArmL)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.UpArmL)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ElbowR)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ElbowR)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ElbowL)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ElbowL)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ForearmR)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ForearmR)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ForearmL)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ForearmL)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.WristR)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.WristR)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.WristL)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.WristL)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.HandR)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.HandR)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.HandL)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.HandL)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.FingersR)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.FingersR)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.FingersL)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.FingersL)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ArmNotes)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ArmNotes)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ChestR)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ChestR)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ChestL)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ChestL)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.RibsR)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.RibsR)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.RibsL)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.RibsL)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ButtocksR)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ButtocksR)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ButtocksL)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ButtocksL)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TorsoNotes)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TorsoNotes)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.HipR)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.HipR)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.HipL)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.HipL)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ThighR)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ThighR)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ThighL)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ThighL)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.UpLegR)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.UpLegR)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.UpLegL)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.UpLegL)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.LowLegRt)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.LowLegRt)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.LowLegR)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.LowLegR)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.KneeR)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.KneeR)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.KneeL)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.KneeL)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AnkleR)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AnkleR)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AnkleL)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AnkleL)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.FootR)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.FootR)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.FootL)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.FootL)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ToesR)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ToesR)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ToesL)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ToesL)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.LegNotes)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.LegNotes)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TingRArm)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TingRArm)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TingLArm)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TingLArm)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.NumbRHand)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.NumbRHand)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.NumbLHand)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.NumbLHand)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PainRArm)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PainRArm)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PainLArm)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PainLArm)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TingRLeg)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TingRLeg)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TingLLeg)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TingLLeg)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.NumbRLeg)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.NumbRLeg)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.NumbLLeg)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.NumbLLeg)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PainRLeg)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PainRLeg)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PainLLeg)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PainLLeg)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.OtherNotes)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.OtherNotes)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

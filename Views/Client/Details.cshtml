@@ -1,0 +1,2953 @@
+@using InteractHealthProDatabase.Models.Enums;
+@model InteractHealthProDatabase.Models.Client
+
+
+@{
+    bool isEdit = Model.Id != 0;
+    ViewData["Title"] = "Details";
+}
+
+<h1> Client Profile</h1>
+
+<div>
+    <h2> Of @Html.DisplayFor(model => model.ContactName)</h2>
+    <div class="row">
+        @* <div class="col-md-2">
+            <div class="btn-group btn-group-justified btn-group-vertical" role="group">
+                <div class="btn-group" role="group">
+                    <a asp-action="CreateOrEdit" asp-route-id="@Model?.Id" class="btn btn-group btn-primary col-auto mx-2">Basic Info</a>
+                </div>
+                <br />
+                <div class="btn-group" role="group">
+                    <a asp-controller="AccidentDetail" asp-action="CreateOrEdit" asp-route-clientId="@Model?.Id" class="btn btn-group btn-primary col-auto mx-2">
+                        Accident
+                    </a>
+                </div>
+                <br />
+                <div class="btn-group" role="group">
+                    <a asp-controller="WorkHistory" asp-action="Index" asp-route-clientId="@Model?.Id" class="btn btn-group btn-primary col-auto mx-2">WorkHistory</a>
+                </div>
+                <br />
+                <div class="btn-group" role="group">
+                    <a asp-controller="HealthFile" asp-action="CreateOrEdit" asp-route-clientId="@Model?.Id" class="btn btn-group btn-primary col-auto mx-2">Health File</a>
+                </div>
+                <br />
+                <div class="btn-group" role="group">
+                    <a asp-controller="MedicalHistoryAccident" asp-action="CreateOrEdit" asp-route-clientId="@Model?.Id" class="btn btn-group btn-primary col-auto mx-2 pe-0">
+                        Medical History
+                    </a>
+                </div>
+                <br />
+                @if (@Model?.BodyPart == null)
+                {
+                    <div class="btn-group" role="group">
+                        <a asp-controller="BodyPart" asp-action="CreateOrEdit" asp-route-clientId="@Model?.Id" class="btn btn-group btn-primary col-auto mx-2"> Injuries </a>
+                    </div>
+                }
+                else
+                {
+                    <div class="btn-group" role="group">
+                        <a asp-controller="BodyPart" asp-action="CreateOrEdit" asp-route-id="@Model?.BodyPart?.Id"
+                       asp-route-clientId="@Model?.Id" class="btn btn-group btn-primary col-auto mx-2">Injuries</a>
+                    </div>
+                }
+                <br />
+                @if (@Model?.Concussion == null)
+                {
+                    <div class="btn-group" role="group">
+                        <a asp-controller="Concussion" asp-action="CreateOrEdit" asp-route-clientId="@Model?.Id" class="btn btn-group btn-primary col-auto mx-2"> Concussion</a>
+                    </div>
+                }
+                else
+                {
+                    <div class="btn-group" role="group">
+                        <a asp-controller="Concussion" asp-action="CreateOrEdit" asp-route-id="@Model?.Concussion.Id"
+                       asp-route-clientId="@Model?.Id" class="btn btn-group btn-primary col-auto mx-2">Concussion</a>
+                    </div>
+                }
+                <br />
+                @if (@Model?.Psychotherapy == null)
+                {
+                    <div class="btn-group" role="group">
+                        <a asp-controller="Psychotherapy" asp-action="CreateOrEdit" asp-route-clientId="@Model?.Id" class="btn btn-group btn-primary col-auto mx-2">
+                            Psychotherapy
+                        </a>
+                    </div>
+                }
+                else
+                {
+                    <div class="btn-group" role="group">
+                        <a asp-controller="Psychotherapy" asp-action="CreateOrEdit" asp-route-id="@Model?.Psychotherapy.Id"
+                       asp-route-clientId="@Model?.Id" class="btn btn-group btn-primary col-auto min-2 mx-2">Psychotherapy</a>
+                    </div>
+                }
+                <br />
+                @* <div class="btn-group" role="group">
+                    <a asp-controller="Medication" asp-action="Index" asp-route-clientId="@Model?.Id" class="btn btn-group btn-primary col-auto mx-2">
+                        Medication
+                    </a>
+                </div> 
+                <br />
+                <div class="btn-group" role="group">
+                    <a asp-controller="Appointment" asp-action="Index" asp-route-clientId="@Model?.Id" class="btn btn-group btn-primary col-auto mx-2">
+                        Appointment
+                    </a>
+                </div>
+                <br />
+                <div class="btn-group" role="group">
+                    <a asp-controller="InsuranceClaim" asp-action="Index" asp-route-clientId="@Model?.Id" class="btn btn-group btn-primary col-auto mx-2 pe-0">
+                        Insurance Claim
+                    </a>
+                </div>
+                <br />
+                <a asp-controller="BodyPart" asp-action="CreateOrEdit" asp-route-clientId="@Model?.Id">Add Injuries By Body Part</a>
+            </div>
+        </div> *@
+        <div class="col-sm-12 ml-5 test-center" style="font-size:20px;">
+            <dl class="row text-justify">
+                <dt class="col-sm-6 text-left">
+                    @Html.DisplayNameFor(model => model.ContactName)
+                </dt>
+                <dd class="col-sm-6 text-left">
+                    @Html.DisplayFor(model => model.ContactName)
+                </dd>
+                <dt class="col-sm-6 text-left">
+                    @Html.DisplayNameFor(model => model.Email)
+                </dt>
+                <dd class="col-sm-6 text-left">
+                    @Html.DisplayFor(model => model.Email)
+                </dd>
+                <dt class="col-sm-6 text-left">
+                    @Html.DisplayNameFor(model => model.CellPhone)
+                </dt>
+                <dd class="col-sm-6 text-left">
+                    @Html.DisplayFor(model => model.CellPhone)
+                </dd>
+                <dt class="col-sm-6 text-left">
+                    @Html.DisplayNameFor(model => model.Telephone)
+                </dt>
+                <dd class="col-sm-6 text-left">
+                    @Html.DisplayFor(model => model.Telephone)
+                </dd>
+                <dt class="col-sm-6 text-left">
+                    @Html.DisplayNameFor(model => model.Fax)
+                </dt>
+                <dd class="col-sm-6 text-left">
+                    @Html.DisplayFor(model => model.Fax)
+                </dd>
+                <dt class="col-sm-6 text-left">
+                    @Html.DisplayNameFor(model => model.Address)
+                </dt>
+                <dd class="col-sm-6 text-left">
+                    @Html.DisplayFor(model => model.Address)
+                </dd>
+                <dt class="col-sm-6 text-left">
+                    @Html.DisplayNameFor(model => model.City)
+                </dt>
+                <dd class="col-sm-6 text-left">
+                    @Html.DisplayFor(model => model.City)
+                </dd>
+                <dt class="col-sm-6 text-left">
+                    @Html.DisplayNameFor(model => model.Region)
+                </dt>
+                <dd class="col-sm-6 text-left">
+                    @Html.DisplayFor(model => model.Region)
+                </dd>
+                <dt class="col-sm-6 text-left">
+                    @Html.DisplayNameFor(model => model.Country)
+                </dt>
+                <dd class="col-sm-6 text-left">
+                    @Html.DisplayFor(model => model.Country)
+                </dd>
+                <dt class="col-sm-6 text-left">
+                    @Html.DisplayNameFor(model => model.PostalCode)
+                </dt>
+                <dd class="col-sm-6 text-left">
+                    @Html.DisplayFor(model => model.PostalCode)
+                </dd>
+            </dl>
+        </div>
+    </div>
+</div>
+
+@*Client Basic Info*@
+<hr />
+
+<div class="row mt-5">
+    <div class="col-sm-4">
+        <div class="btn-group" role="group">
+            <a asp-action="CreateOrEdit" asp-route-id="@Model?.Id" class="btn btn-group btn-primary col-auto mx-2">Edit Basic Info</a>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <h2 class="text-center">Client Info</h2>
+    </div>
+    <div class="col-sm-4">
+        @if (Model.Id > 0)
+        {
+            <h2 class="text-center">Client ID: @Model.Id</h2>
+        }
+    </div>
+</div>
+<hr/>
+<div class="row">
+        @* Client itself *@
+        <div class="col-sm">
+                <legend>Client Basic Info</legend>
+                <div class="row">
+                    <div class="col">
+                        <label asp-for="ContactName" class="text-center"></label>
+                    </div>
+                    <div class="col">
+                        <label class="text-center">@Html.DisplayFor(model => model.ContactName)</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label asp-for="Email" class="text-center"></label>
+                    </div>
+                    <div class="col">
+                        <label class="text-center">@Html.DisplayFor(model => model.Email)</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label asp-for="CellPhone" class="text-center"></label>
+                    </div>
+                    <div class="col">
+                        <label class="text-center">@Html.DisplayFor(model => model.CellPhone)</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label asp-for="Telephone" class="text-center"></label>
+                    </div>
+                    <div class="col">
+                        <label class="text-center">@Html.DisplayFor(model => model.Telephone)</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label asp-for="Fax" class="text-center"></label>
+                    </div>
+                    <div class="col">
+                        <label class="text-center">@Html.DisplayFor(model => model.Fax)</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label asp-for="Address" class="text-center"></label>
+                    </div>
+                    <div class="col">
+                        <label class="text-center">@Html.DisplayFor(model => model.Address)</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label asp-for="City" class="text-center"></label>
+                    </div>
+                    <div class="col">
+                        <label class="text-center">@Html.DisplayFor(model => model.City)</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label asp-for="Region" class="text-center"></label>
+                    </div>
+                    <div class="col">
+                        <label class="text-center">@Html.DisplayFor(model => model.Region)</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label asp-for="Country" class="text-center"></label>
+                    </div>
+                    <div class="col">
+                        <label class="text-center">@Html.DisplayFor(model => model.Country)</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label asp-for="PostalCode" class="text-center"></label>
+                    </div>
+                    <div class="col">
+                        <label class="text-center">@Html.DisplayFor(model => model.PostalCode)</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label asp-for="ClientMVA.DateCreated" class="text-center"></label>
+                    </div>
+                    <div class="col">
+                        <label class="text-center">@Html.DisplayFor(model => model.ClientMVA.DateCreated)</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label asp-for="ClientMVA.Dob" class="text-center"></label>
+                    </div>
+                    <div class="col">
+                        <label class="text-center">@Html.DisplayFor(model => model.ClientMVA.Dob)</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label asp-for="ClientMVA.OHIP" class="text-center"></label>
+                    </div>
+                    <div class="col">
+                        <label class="text-center">@Html.DisplayFor(model => model.ClientMVA.OHIP)</label>
+                    </div>
+                </div>
+            </div>
+
+            @* ClientMVA *@
+            <div class="col-sm">
+                <legend>Extended Client Info</legend>
+                <div class="row">
+                    <div class="col">
+                        <label asp-for="ClientMVA.Gender" class="text-left"></label>
+                    </div>
+                    <div class="col">
+                        <label class="text-left">@Html.DisplayFor(model => model.ClientMVA.Gender)</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label asp-for="ClientMVA.DominantHand" class="text-left"></label>
+                    </div>
+                    <div class="col">
+                        <label class="text-left">@Html.DisplayFor(model => model.ClientMVA.DominantHand)</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label asp-for="ClientMVA.Height" class="text-left"></label>
+                    </div>
+                    <div class="col">
+                        <label class="text-left">@Html.DisplayFor(model => model.ClientMVA.Height)</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label asp-for="ClientMVA.Weight" class="text-left"></label>
+                    </div>
+                    <div class="col">
+                        <label class="text-left">@Html.DisplayFor(model => model.ClientMVA.Weight)</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label asp-for="ClientMVA.MaritalStatus" class="text-left"></label>
+                    </div>
+                    <div class="col">
+                        <label class="text-left">@Html.DisplayFor(model => model.ClientMVA.MaritalStatus)</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label asp-for="ClientMVA.Accommodation" class="text-left"></label>
+                    </div>
+                    <div class="col">
+                        <label class="text-left">@Html.DisplayFor(model => model.ClientMVA.Accommodation)</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label asp-for="ClientMVA.AccommodationType" class="text-left"></label>
+                    </div>
+                    <div class="col">
+                        <label class="text-left">@Html.DisplayFor(model => model.ClientMVA.AccommodationType)</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label asp-for="ClientMVA.Household" class="text-left"></label>
+                    </div>
+                    <div class="col">
+                        <label class="text-left">@Html.DisplayFor(model => model.ClientMVA.Household)</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label asp-for="ClientMVA.EmergencyContactName" class="text-left"></label>
+                    </div>
+                    <div class="col">
+                        <label class="text-left">@Html.DisplayFor(model => model.ClientMVA.EmergencyContactName)</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label asp-for="ClientMVA.Relationship" class="text-left"></label>
+                    </div>
+                    <div class="col">
+                        <label class="text-left">@Html.DisplayFor(model => model.ClientMVA.Relationship)</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label asp-for="ClientMVA.CellPhone" class="text-left"></label>
+                    </div>
+                    <div class="col">
+                        <label class="text-left">@Html.DisplayFor(model => model.ClientMVA.CellPhone)</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label asp-for="ClientMVA.Interpreter" class="text-left"></label>
+                    </div>
+                    <div class="col">
+                        <label class="text-left">@Html.DisplayFor(model => model.ClientMVA.Interpreter)</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label asp-for="ClientMVA.PreferredLanguage" class="text-left"></label>
+                    </div>
+                    <div class="col">
+                        <label class="text-left">@Html.DisplayFor(model => model.ClientMVA.PreferredLanguage)</label>
+                    </div>
+                </div>
+            </div>
+
+        @* PET *@
+    <div class="col-sm">
+        <legend>Pets</legend>
+        <div class="row">
+            <div class="col">
+                <label asp-for="Pet.Cat" class="text-left"></label>
+            </div>
+            <div class="col">
+                <label class="text-left">@Html.DisplayFor(model => model.Pet.Cat)</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label asp-for="Pet.Dog" class="text-left"></label>
+            </div>
+            <div class="col">
+                <label class="text-left">@Html.DisplayFor(model => model.Pet.Dog)</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label asp-for="Pet.Details" class="text-left"></label>
+            </div>
+            <div class="col">
+                <label class="text-left">@Html.DisplayFor(model => model.Pet.Details)</label>
+            </div>
+        </div>
+
+        @* Dependent *@
+
+        <legend>Dependents</legend>
+        <div class="row">
+            <div class="col">
+                <label asp-for="Dependent.Person" class="text-left"></label>
+            </div>
+            <div class="col">
+                <label class="text-left">@Html.DisplayFor(model => model.Dependent.Person)</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label asp-for="Dependent.Wheelchair" class="text-left"></label>
+            </div>
+            <div class="col">
+                <label class="text-left">@Html.DisplayFor(model => model.Dependent.Wheelchair)</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label asp-for="Dependent.Details" class="text-left"></label>
+            </div>
+            <div class="col">
+                <label class="text-left">@Html.DisplayFor(model => model.Dependent.Details)</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label asp-for="ClientMVA.Children" class="text-left"></label>
+            </div>
+            <div class="col">
+                <label class="text-left">@Html.DisplayFor(model => model.ClientMVA.Children)</label>
+            </div>
+        </div>
+        <legend>Notes</legend>
+        <div class="row">
+            <div class="col">
+                <label asp-for="ClientMVA.Notes" class="text-left"></label>
+            </div>
+            <div class="col">
+                <label class="text-left">@Html.DisplayFor(model => model.ClientMVA.Notes)</label>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col">
+                <label asp-for="ClientMVA.Consent" class="text-left"></label>
+            </div>
+            <div class="col">
+                <label class="text-left">@Html.DisplayFor(model => model.ClientMVA.Consent)</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label asp-for="Referral" class="text-left"></label>
+            </div>
+            <div class="col">
+                <label class="text-left">@Html.DisplayFor(model => model.Referral)</label>
+            </div>
+        </div>
+    </div>
+</div> @*end of row*@
+<hr />
+
+@*Accident Detail*@ 
+<div class="mt-5">
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="btn-group" role="group">
+                <a asp-controller="AccidentDetail" asp-action="CreateOrEdit" asp-route-clientId="@Model?.Id" class="btn btn-group btn-primary col-auto mx-2">
+                    Accident
+                </a>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <h2>Accident Details</h2>
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col-sm-6">
+            <legend>General details</legend>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.AccidentDetail.DateTimeAcc)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.AccidentDetail.DateTimeAcc)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.AccidentDetail.MedicalHistoryUrl)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.AccidentDetail.MedicalHistoryUrl)
+                </div>
+            </div>
+            <div class="col">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.AccidentDetail.FMedVisit)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.AccidentDetail.FMedVisit)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.AccidentDetail.Weather)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.AccidentDetail.Weather)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.AccidentDetail.Visibility)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.AccidentDetail.Visibility)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.AccidentDetail.RoadCondition)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.AccidentDetail.RoadCondition)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.AccidentDetail.AccidentLocation)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.AccidentDetail.AccidentLocation)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.AccidentDetail.AccidentDesc)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.AccidentDetail.AccidentDesc)
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <legend>Police Info</legend>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.AccidentDetail.PoliceName)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.AccidentDetail.PoliceName)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.AccidentDetail.PoliceBadgeNo)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.AccidentDetail.PoliceBadgeNo)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.AccidentDetail.PoliceDept)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.AccidentDetail.PoliceDept)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.AccidentDetail.PoliceReportAccDate)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.AccidentDetail.PoliceReportAccDate)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.AccidentDetail.PoliceReportCenter)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.AccidentDetail.PoliceReportCenter)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.AccidentDetail.PoliceCharge)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.AccidentDetail.PoliceCharge)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.AccidentDetail.EmeAtScenePolice)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.AccidentDetail.EmeAtScenePolice)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.AccidentDetail.EmeAtSceneAmbulance)
+                </div>
+                <div class="col">
+                @Html.DisplayFor(model => model.AccidentDetail.EmeAtSceneAmbulance)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.AccidentDetail.EmeAtSceneFirefighters)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.AccidentDetail.EmeAtSceneFirefighters)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.AccidentDetail.EmeAtSceneTowing)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.AccidentDetail.EmeAtSceneTowing)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.AccidentDetail.EmeAtSceneNoOneCame)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.AccidentDetail.EmeAtSceneNoOneCame)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.AccidentDetail.TakeByAmbulance)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.AccidentDetail.TakeByAmbulance)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.AccidentDetail.Note)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.AccidentDetail.Note)
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<hr />
+
+@*Accident Vehicule*@
+<div class="mt-5">
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="btn-group" role="group">
+                    <a asp-controller="AccidentVehicle" asp-action="CreateOrEdit" asp-route-clientId="@Model?.Id" asp-route-Id="@Model?.AccidentDetail?.AccidentVehicle?.Id" class="btn btn-group btn-primary col-auto mx-2">
+                        Accident Vehicle
+                    </a>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <h2>Accident Vehicle</h2>
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col">
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.AccidentDetail.AccidentVehicle.TransportType)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.AccidentDetail.AccidentVehicle.TransportType)
+                </div>
+            </div>
+            <div class="col-sm-3">
+                @Html.DisplayNameFor(model => model.AccidentDetail.AccidentVehicle.DriverPosition)
+            </div>
+            <div class="col-sm-3">
+                @Html.DisplayFor(model => model.AccidentDetail.AccidentVehicle.DriverPosition)
+            </div>
+            <div class="col-sm-3">
+                @Html.DisplayNameFor(model => model.AccidentDetail.AccidentVehicle.Make)
+            </div>
+            <div class="col-sm-3">
+                @Html.DisplayFor(model => model.AccidentDetail.AccidentVehicle.Make)
+            </div>
+            <div class="col-sm-3">
+                @Html.DisplayNameFor(model => model.AccidentDetail.AccidentVehicle.Model)
+            </div>
+            <div class="col-sm-3">
+                @Html.DisplayFor(model => model.AccidentDetail.AccidentVehicle.Model)
+            </div>
+            <div class="col-sm-3">
+                @Html.DisplayNameFor(model => model.AccidentDetail.AccidentVehicle.Year)
+            </div>
+            <div class="col-sm-3">
+                @Html.DisplayFor(model => model.AccidentDetail.AccidentVehicle.Year)
+            </div>
+            <div class="col-sm-3">
+                @Html.DisplayNameFor(model => model.AccidentDetail.AccidentVehicle.License)
+            </div>
+            <div class="col-sm-3">
+                @Html.DisplayFor(model => model.AccidentDetail.AccidentVehicle.License)
+            </div>
+            <div class="col-sm-3">
+                @Html.DisplayNameFor(model => model.AccidentDetail.AccidentVehicle.VehiclePersName)
+            </div>
+            <div class="col-sm-3">
+                @Html.DisplayFor(model => model.AccidentDetail.AccidentVehicle.VehiclePersName)
+            </div>
+            <div class="col-sm-3">
+                @Html.DisplayNameFor(model => model.AccidentDetail.AccidentVehicle.VehicleNoPeople)
+            </div>
+            <div class="col-sm-3">
+                @Html.DisplayFor(model => model.AccidentDetail.AccidentVehicle.VehicleNoPeople)
+            </div>
+            <div class="col-sm-3">
+                @Html.DisplayNameFor(model => model.AccidentDetail.AccidentVehicle.OtherLiableParties)
+            </div>
+            <div class="col-sm-3">
+                @Html.DisplayFor(model => model.AccidentDetail.AccidentVehicle.OtherLiableParties)
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.AccidentDetail.AccidentVehicle.Seatbelt)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.AccidentDetail.AccidentVehicle.Seatbelt)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.AccidentDetail.AccidentVehicle.AirbagDeploy)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.AccidentDetail.AccidentVehicle.AirbagDeploy)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.AccidentDetail.AccidentVehicle.Bracing)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.AccidentDetail.AccidentVehicle.Bracing)
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.AccidentDetail.AccidentVehicle.Anticipated)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.AccidentDetail.AccidentVehicle.Anticipated)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.AccidentDetail.AccidentVehicle.MvaCoName)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.AccidentDetail.AccidentVehicle.MvaCoName)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.AccidentDetail.AccidentVehicle.MvaPolicyNo)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.AccidentDetail.AccidentVehicle.MvaPolicyNo)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.AccidentDetail.AccidentVehicle.MvaClaimNo)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.AccidentDetail.AccidentVehicle.MvaClaimNo)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.AccidentDetail.AccidentVehicle.MvaAdjuster)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.AccidentDetail.AccidentVehicle.MvaAdjuster)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.AccidentDetail.AccidentVehicle.MvaTel)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.AccidentDetail.AccidentVehicle.MvaTel)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.AccidentDetail.AccidentVehicle.MvaFax)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.AccidentDetail.AccidentVehicle.MvaFax)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.AccidentDetail.AccidentVehicle.MvaEmail)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.AccidentDetail.AccidentVehicle.MvaEmail)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.AccidentDetail.AccidentVehicle.MvaAddress)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.AccidentDetail.AccidentVehicle.MvaAddress)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.AccidentDetail.AccidentVehicle.MvaCity)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.AccidentDetail.AccidentVehicle.MvaCity)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.AccidentDetail.AccidentVehicle.MvaProv)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.AccidentDetail.AccidentVehicle.MvaProv)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.AccidentDetail.AccidentVehicle.MvaPC)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.AccidentDetail.AccidentVehicle.MvaPC)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.AccidentDetail.AccidentVehicle.InsuranceUrl)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.AccidentDetail.AccidentVehicle.InsuranceUrl)
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<hr/>
+
+@*Work History - ask Lucie*@
+<div class="mt-5">
+    <div class="row">
+        <div class="col">
+            <div class="btn-group" role="group">
+                <a asp-controller="WorkHistory" asp-action="CreateOrEdit" asp-route-clientId="@Model?.Id" asp-route-Id="@Model?.WorkHistory?.Id" class="btn btn-group btn-primary col-auto mx-2">Work History </a>
+            </div>
+        </div>
+        <div class="col">
+            <h2>Work History </h2>
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+       <div class="col">
+           <div class="row">
+               <div class = "col">
+                    @Html.DisplayNameFor(model => model.WorkHistory.Position)
+                </div>
+                <div class = "col">
+                    @Html.DisplayFor(model => model.WorkHistory.Position)
+                </div>
+            </div>
+            <div class="row">
+                <div class = "col">
+                    @Html.DisplayNameFor(model => model.WorkHistory.Company)
+                </div>
+                <div class = "col">
+                    @Html.DisplayFor(model => model.WorkHistory.Company)
+                </div>
+            </div>
+            <div class="row">
+                <div class = "col">
+                    @Html.DisplayNameFor(model => model.WorkHistory.Address)
+                </div>
+                <div class = "col">
+                    @Html.DisplayFor(model => model.WorkHistory.Address)
+                </div>
+            </div>
+            <div class="row">
+                <div class = "col">
+                    @Html.DisplayNameFor(model => model.WorkHistory.City)
+                </div>
+                <div class = "col">
+                    @Html.DisplayFor(model => model.WorkHistory.City)
+                </div>
+            </div>
+            <div class="row">
+                <div class = "col">
+                    @Html.DisplayNameFor(model => model.WorkHistory.Region)
+                </div>
+                <div class = "col">
+                    @Html.DisplayFor(model => model.WorkHistory.Region)
+                </div>
+            </div>
+            <div class="row">
+                <div class = "col">
+                    @Html.DisplayNameFor(model => model.WorkHistory.PostalCode)
+                </div>
+                <div class = "col">
+                    @Html.DisplayFor(model => model.WorkHistory.PostalCode)
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="row">
+                <div class = "col">
+                    @Html.DisplayNameFor(model => model.WorkHistory.Country)
+                </div>
+                <div class = "col">
+                    @Html.DisplayFor(model => model.WorkHistory.Country)
+                </div>
+            </div>
+            <div class="row">
+                <div class = "col">
+                    @Html.DisplayNameFor(model => model.WorkHistory.From)
+                </div>
+                <div class = "col">
+                    @Html.DisplayFor(model => model.WorkHistory.From)
+                </div>
+            </div>
+            <div class="row">
+                <div class = "col">
+                    @Html.DisplayNameFor(model => model.WorkHistory.Until)
+                </div>
+                <div class = "col">
+                    @Html.DisplayFor(model => model.WorkHistory.Until)
+                </div>
+            </div>
+            <div class="row">
+                <div class = "col">
+                    @Html.DisplayNameFor(model => model.WorkHistory.Details)
+                </div>
+                <div class = "col">
+                    @Html.DisplayFor(model => model.WorkHistory.Details)
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<hr/>
+
+@*Health File*@
+<div class="mt-5">
+    <div class="row">
+       <div class="col">
+            <div class="btn-group" role="group">
+                <a asp-controller="HealthFile" asp-action="CreateOrEdit" asp-route-clientId="@Model?.Id" class="btn btn-group btn-primary col-auto mx-2">Create a new Health File</a>
+            </div>
+        </div>
+        <div class="col">
+            <h2>Health File</h2>
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+        @foreach (var healthFile in Model.HealthFile.ToList()){
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="btn-group" role="group">
+                        <a asp-controller="HealthFile" asp-action="CreateOrEdit" asp-route-clientId="@Model?.Id" asp-route-Id="@healthFile.Id" class="btn btn-group btn-primary col-auto mx-2">Modify Health File</a>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="row">
+                        <div class="col">
+                            @Html.DisplayNameFor(model => healthFile.RefNo)
+                        </div>
+                        <div class="col">
+                            @Html.DisplayFor(model => healthFile.RefNo)
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            @Html.DisplayNameFor(model => healthFile.OtherRefNo)
+                        </div>
+                        <div class="col">
+                            @Html.DisplayFor(model => healthFile.OtherRefNo)
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="row">
+                        <div class="col">
+                            @Html.DisplayNameFor(model => healthFile.TypeOfAppointment)
+                        </div>
+                        <div class="col">
+                            @Html.DisplayFor(model => healthFile.TypeOfAppointment)
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            @Html.DisplayNameFor(model => healthFile.DateTime)
+                        </div>
+                        <div class="col">
+                            @Html.DisplayFor(model => healthFile.DateTime)
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            @Html.DisplayNameFor(model => healthFile.HealthCompany.Title)
+                        </div>
+                        <div class="col">
+                            @Html.DisplayFor(model => healthFile.HealthCompany.Title)
+                        </div>
+                    </div>
+                </div>
+                <hr/>
+            </div>
+        }
+    </div>
+</div>
+<hr/>
+
+@*Medical History - ask Lucie*@
+<div class="mt-5">
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="btn-group" role="group">
+                <a asp-controller="MedicalHistoryAccident" asp-action="CreateOrEdit" asp-route-clientId="@Model?.Id" asp-route-Id="@Model?.MedicalHistoryAccident?.Id" class="btn btn-group btn-primary col-auto mx-2">
+                    Medical History Accident
+                </a>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <h2>Medical History </h2>
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col">
+            <div class="row">
+                <div class = "col">
+                    @Html.DisplayNameFor(model => model.MedicalHistoryAccident.DiagnosisDate)
+                </div>
+                <div class = "col">
+                    @Html.DisplayFor(model => model.MedicalHistoryAccident.DiagnosisDate)
+                </div>
+            </div>
+            <div class="row">
+                <div class = "col">
+                    @Html.DisplayNameFor(model => model.MedicalHistoryAccident.Name)
+                </div>
+                <div class = "col">
+                    @Html.DisplayFor(model => model.MedicalHistoryAccident.Name)
+                </div>
+            </div>
+            <div class="row">
+                <div class = "col">
+                    @Html.DisplayNameFor(model => model.MedicalHistoryAccident.City)
+                </div>
+                <div class = "col">
+                    @Html.DisplayFor(model => model.MedicalHistoryAccident.City)
+                </div>
+            </div>
+            <div class="row">
+                <div class = "col">
+                    @Html.DisplayNameFor(model => model.MedicalHistoryAccident.PostalCode)
+                </div>
+                <div class = "col">
+                    @Html.DisplayFor(model => model.MedicalHistoryAccident.PostalCode)
+                </div>
+            </div>
+            <div class="row">
+                <div class = "col">
+                    @Html.DisplayNameFor(model => model.MedicalHistoryAccident.Description)
+                </div>
+                <div class = "col">
+                    @Html.DisplayFor(model => model.MedicalHistoryAccident.Description)
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="row">
+                <div class = "col">
+                    @Html.DisplayNameFor(model => model.MedicalHistoryAccident.NameOfPatiant)
+                </div>
+                <div class = "col">
+                    @Html.DisplayFor(model => model.MedicalHistoryAccident.NameOfPatiant)
+                </div>
+            </div>
+            <div class="row">
+                <div class = "col">
+                    @Html.DisplayNameFor(model => model.MedicalHistoryAccident.Ambulance)
+                </div>
+                <div class = "col">
+                    @Html.DisplayFor(model => model.MedicalHistoryAccident.Ambulance)
+                </div>
+            </div>
+            <div class="row">
+                <div class = "col">
+                    @Html.DisplayNameFor(model => model.MedicalHistoryAccident.Walkin)
+                </div>
+                <div class = "col">
+                    @Html.DisplayFor(model => model.MedicalHistoryAccident.Walkin)
+                </div>
+            </div>
+            <div class="row">
+                <div class = "col">
+                    @Html.DisplayNameFor(model => model.MedicalHistoryAccident.Attending)
+                </div>
+                <div class = "col">
+                    @Html.DisplayFor(model => model.MedicalHistoryAccident.Attending)
+                </div>
+            </div>
+            <div class="row">
+                <div class = "col">
+                    @Html.DisplayNameFor(model => model.MedicalHistoryAccident.Xray)
+                </div>
+                <div class = "col">
+                    @Html.DisplayFor(model => model.MedicalHistoryAccident.Xray)
+                </div>
+            </div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col">
+                <div class="btn-group" role="group">
+                    <a asp-controller="Medication" asp-action="CreateOrEdit" asp-route-clientId="@Model?.Id" asp-route-type="MedicalHistoryAccident" class="btn btn-group btn-primary col-auto mx-2">
+                        Add Medication
+                    </a>
+                </div>
+            </div>
+            <div class="col">
+                <h2> Medications For Accident </h2>
+            </div>
+        </div>
+        @if(Model?.MedicalHistoryAccident?.Medications != null)
+        {
+            @foreach (var medication in Model.MedicalHistoryAccident.Medications.ToList())
+            {
+            <div class="row">
+                <div class="col">
+                    <div class="btn-group" role="group">
+                        <a asp-controller="Medication" asp-action="CreateOrEdit" asp-route-clientId="@Model?.Id" asp-route-Id="@medication?.Id" class="btn btn-group btn-primary col-auto mx-2">
+                            Modify Medication
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="row">
+                        <div class = "col">
+                            @Html.DisplayNameFor(model => medication.Diagnosis)
+                        </div>
+                        <div class = "col">
+                            @Html.DisplayFor(model => medication.Diagnosis)
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class = "col">
+                            @Html.DisplayNameFor(model => medication.Treatment)
+                        </div>
+                        <div class = "col">
+                            @Html.DisplayFor(model => medication.Treatment)
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class = "col">
+                            @Html.DisplayNameFor(model => medication.Drug)
+                        </div>
+                        <div class = "col">
+                            @Html.DisplayFor(model => medication.Drug)
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="row">
+                        <div class = "col">
+                            @Html.DisplayNameFor(model => medication.Doseage)
+                        </div>
+                        <div class = "col">
+                            @Html.DisplayFor(model => medication.Doseage)
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class = "col">
+                            @Html.DisplayNameFor(model => medication.DateDiagnosed)
+                        </div>
+                        <div class = "col">
+                            @Html.DisplayFor(model => medication.DateDiagnosed)
+                        </div>
+                    </div>
+                </div>
+                <hr/>
+            </div>
+            }
+        }
+    </div>
+    <hr/>
+    @* Pre-accident *@
+    <div class="row">
+        <div class="col">
+            <a asp-controller="MedicalHistoryPreAccident" asp-action="CreateOrEdit" asp-route-clientId="@Model?.Id" asp-route-Id="@Model?.MedicalHistoryPreAccident?.Id" class="btn btn-group btn-primary col-auto mx-2">
+                    Pre Accident
+                </a>
+        </div>
+        <div class="col">
+            <h2> Pre-Accident</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="row">
+                <div class = "col">
+                    @Html.DisplayNameFor(model => model.MedicalHistoryPreAccident.Hospitalized)
+                </div>
+                <div class = "col">
+                    @Html.DisplayFor(model => model.MedicalHistoryPreAccident.Hospitalized)
+                </div>
+            </div>
+            <div class="row">
+                <div class = "col">
+                    @Html.DisplayNameFor(model => model.MedicalHistoryPreAccident.HospitalizedCondition)
+                </div>
+                <div class = "col">
+                    @Html.DisplayFor(model => model.MedicalHistoryPreAccident.HospitalizedCondition)
+                </div>
+            </div>
+            <div class="row">
+                <div class = "col">
+                    @Html.DisplayNameFor(model => model.MedicalHistoryPreAccident.Asthma)
+                </div>
+                <div class = "col">
+                    @Html.DisplayFor(model => model.MedicalHistoryPreAccident.Asthma)
+                </div>
+            </div>
+            <div class="row">
+                <div class = "col">
+                    @Html.DisplayNameFor(model => model.MedicalHistoryPreAccident.Arthritis)
+                </div>
+                <div class = "col">
+                    @Html.DisplayFor(model => model.MedicalHistoryPreAccident.Arthritis)
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="row">
+                <div class = "col">
+                    @Html.DisplayNameFor(model => model.MedicalHistoryPreAccident.Diabetes)
+                </div>
+                <div class = "col">
+                    @Html.DisplayFor(model => model.MedicalHistoryPreAccident.Diabetes)
+                </div>
+            </div>
+            <div class="row">
+                <div class = "col">
+                    @Html.DisplayNameFor(model => model.MedicalHistoryPreAccident.HeartStroke)
+                </div>
+                <div class = "col">
+                    @Html.DisplayFor(model => model.MedicalHistoryPreAccident.HeartStroke)
+                </div>
+            </div>
+            <div class="row">
+                <div class = "col">
+                    @Html.DisplayNameFor(model => model.MedicalHistoryPreAccident.Thyroid)
+                </div>
+                <div class = "col">
+                    @Html.DisplayFor(model => model.MedicalHistoryPreAccident.Thyroid)
+                </div>
+            </div>
+            <div class="row">
+                <div class = "col">
+                    @Html.DisplayNameFor(model => model.MedicalHistoryPreAccident.Cancer)
+                </div>
+                <div class = "col">
+                    @Html.DisplayFor(model => model.MedicalHistoryPreAccident.Cancer)
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="row">
+                <div class = "col">
+                    @Html.DisplayNameFor(model => model.MedicalHistoryPreAccident.Other)
+                </div>
+                <div class = "col">
+                    @Html.DisplayFor(model => model.MedicalHistoryPreAccident.Other)
+                </div>
+            </div>
+            <div class="row">
+                <div class = "col">
+                    @Html.DisplayNameFor(model => model.MedicalHistoryPreAccident.None)
+                </div>
+                <div class = "col">
+                    @Html.DisplayFor(model => model.MedicalHistoryPreAccident.None)
+                </div>
+            </div>
+            <div class="row">
+                <div class = "col">
+                    @Html.DisplayNameFor(model => model.MedicalHistoryPreAccident.Note)
+                </div>
+                <div class = "col">
+                    @Html.DisplayFor(model => model.MedicalHistoryPreAccident.Note)
+                </div>
+            </div>
+        </div>
+        <hr/>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="btn-group" role="group">
+                <a asp-controller="Medication" asp-action="CreateOrEdit" asp-route-clientId="@Model?.Id" asp-route-type="MedicalHistoryPreAccident" class="btn btn-group btn-primary col-auto mx-2">
+                        Add Medication
+                    </a>
+                </div>
+        </div>
+        <div class="col">
+            <h2> Medications For Pre Accident </h2>
+        </div>
+    </div>
+    @if(Model.MedicalHistoryPreAccident?.Medications != null)
+        {
+        @foreach (var medication in Model.MedicalHistoryPreAccident.Medications.ToList())
+        {
+        <div class="row">
+                <div class="col">
+                    <div class="btn-group" role="group">
+                        <a asp-controller="Medication" asp-action="CreateOrEdit" asp-route-clientId="@Model?.Id" asp-route-Id="@medication?.Id" class="btn btn-group btn-primary col-auto mx-2">
+                            Modify Medication
+                        </a>
+                    </div>
+                </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="row">
+                    <div class = "col">
+                        @Html.DisplayNameFor(model => medication.Diagnosis)
+                    </div>
+                    <div class = "col">
+                        @Html.DisplayFor(model => medication.Diagnosis)
+                    </div>
+                </div>
+                <div class="row">
+                    <div class = "col">
+                        @Html.DisplayNameFor(model => medication.Treatment)
+                    </div>
+                    <div class = "col">
+                        @Html.DisplayFor(model => medication.Treatment)
+                    </div>
+                </div>
+                <div class="row">
+                    <div class = "col">
+                        @Html.DisplayNameFor(model => medication.Drug)
+                    </div>
+                    <div class = "col">
+                        @Html.DisplayFor(model => medication.Drug)
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="row">
+                    <div class = "col">
+                        @Html.DisplayNameFor(model => medication.Doseage)
+                    </div>
+                    <div class = "col">
+                        @Html.DisplayFor(model => medication.Doseage)
+                    </div>
+                </div>
+                <div class="row">
+                    <div class = "col">
+                        @Html.DisplayNameFor(model => medication.DateDiagnosed)
+                    </div>
+                    <div class = "col">
+                        @Html.DisplayFor(model => medication.DateDiagnosed)
+                    </div>
+                </div>
+            </div>
+            <hr/>
+        </div>
+        }
+        }
+    <hr/>
+    @* Post-accident *@
+    <div class="row">
+        <div class="col">
+            <a asp-controller="MedicalHistoryPostAccident" asp-action="CreateOrEdit" asp-route-clientId="@Model?.Id" asp-route-Id="@Model?.MedicalHistoryPostAccident?.Id" class="btn btn-group btn-primary col-auto mx-2">
+                    Post Accident
+                </a>
+        </div>
+        <div class="col">
+            <h2> Post Accident</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="row">
+                <div class = "col">
+                    @Html.DisplayNameFor(model => model.MedicalHistoryPostAccident.TreatmentCenter)
+                </div>
+                <div class = "col">
+                    @Html.DisplayFor(model => model.MedicalHistoryPostAccident.TreatmentCenter)
+                </div>
+            </div>
+            <div class="row">
+                <div class = "col">
+                    @Html.DisplayNameFor(model => model.MedicalHistoryPostAccident.Appointment)
+                </div>
+                <div class = "col">
+                    @Html.DisplayFor(model => model.MedicalHistoryPostAccident.Appointment)
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="row">
+                <div class = "col">
+                    @Html.DisplayNameFor(model => model.MedicalHistoryPostAccident.Doctor)
+                </div>
+                <div class = "col">
+                    @Html.DisplayFor(model => model.MedicalHistoryPostAccident.Doctor)
+                </div>
+            </div>
+        </div>
+        <hr/>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="btn-group" role="group">
+                <a asp-controller="Medication" asp-action="CreateOrEdit" asp-route-clientId="@Model?.Id" asp-route-type="MedicalHistoryPostAccident" class="btn btn-group btn-primary col-auto mx-2">
+                        Add Medication
+                    </a>
+                </div>
+        </div>
+        <div class="col">
+            <h2> Medications For Post Accident </h2>
+        </div>
+    </div>
+    @if(Model.MedicalHistoryPostAccident?.Medications != null)
+    {
+    @foreach (var medication in Model.MedicalHistoryPostAccident.Medications.ToList())
+        {
+        <div class="row">
+                <div class="col">
+                    <div class="btn-group" role="group">
+                        <a asp-controller="Medication" asp-action="CreateOrEdit" asp-route-clientId="@Model?.Id" asp-route-Id="@medication?.Id" class="btn btn-group btn-primary col-auto mx-2">
+                            Modify Medication
+                        </a>
+                    </div>
+                </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="row">
+                    <div class = "col">
+                        @Html.DisplayNameFor(model => medication.Diagnosis)
+                    </div>
+                    <div class = "col">
+                        @Html.DisplayFor(model => medication.Diagnosis)
+                    </div>
+                </div>
+                <div class="row">
+                    <div class = "col">
+                        @Html.DisplayNameFor(model => medication.Treatment)
+                    </div>
+                    <div class = "col">
+                        @Html.DisplayFor(model => medication.Treatment)
+                    </div>
+                </div>
+                <div class="row">
+                    <div class = "col">
+                        @Html.DisplayNameFor(model => medication.Drug)
+                    </div>
+                    <div class = "col">
+                        @Html.DisplayFor(model => medication.Drug)
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="row">
+                    <div class = "col">
+                        @Html.DisplayNameFor(model => medication.Doseage)
+                    </div>
+                    <div class = "col">
+                        @Html.DisplayFor(model => medication.Doseage)
+                    </div>
+                </div>
+                <div class="row">
+                    <div class = "col">
+                        @Html.DisplayNameFor(model => medication.DateDiagnosed)
+                    </div>
+                    <div class = "col">
+                        @Html.DisplayFor(model => medication.DateDiagnosed)
+                    </div>
+                </div>
+            </div>
+            <hr/>
+        </div>
+        }
+    }
+</div>
+<hr/>
+
+@*Body Trauma*@
+<div class="mt-5">
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="btn-group" role="group">
+                <a asp-controller="BodyTrauma" asp-action="CreateOrEdit" asp-route-clientId="@Model?.Id" asp-route-Id="@Model?.BodyTrauma?.Id" class="btn btn-group btn-primary col-auto mx-2">
+                    Body Trauma 
+                </a>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <h2>BodyTrauma </h2>
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="row">
+            <div class="col">
+                <div class="row">
+                    <div class="col">
+                        @Html.DisplayNameFor(model => model.BodyTrauma.Bruising)
+                    </div>
+                    <div class="col">
+                        @Html.DisplayFor(model => model.BodyTrauma.Bruising)
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        @Html.DisplayNameFor(model => model.BodyTrauma.Bleeding)
+                    </div>
+                    <div class="col">
+                        @Html.DisplayFor(model => model.BodyTrauma.Bleeding)
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        @Html.DisplayNameFor(model => model.BodyTrauma.Fracture)
+                    </div>
+                    <div class="col">
+                        @Html.DisplayFor(model => model.BodyTrauma.Fracture)
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        @Html.DisplayNameFor(model => model.BodyTrauma.LossOfContentiousness)
+                    </div>
+                    <div class="col">
+                            @Html.DisplayFor(model => model.BodyTrauma.LossOfContentiousness)
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="row">
+                    <div class="col">
+                        @Html.DisplayNameFor(model => model.BodyTrauma.HitToTheHead)
+                    </div>
+                    <div class="col">
+                        @Html.DisplayFor(model => model.BodyTrauma.HitToTheHead)
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        @Html.DisplayNameFor(model => model.BodyTrauma.None)
+                    </div>
+                    <div class="col">
+                        @Html.DisplayFor(model => model.BodyTrauma.None)
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        @Html.DisplayNameFor(model => model.BodyTrauma.PainRightAway)
+                    </div>
+                    <div class="col">
+                        @Html.DisplayFor(model => model.BodyTrauma.PainRightAway)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<hr/>
+
+@*Injuries - body parts*@
+<div class="mt-5">
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="btn-group" role="group">
+                <a asp-controller="BodyPart" asp-action="CreateOrEdit" asp-route-clientId="@Model?.Id" asp-route-Id="@Model?.BodyPart?.Id" class="btn btn-group btn-primary col-auto mx-2"> Injuries </a>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <h2>Body Injuries</h2>
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.BodyPart.Concussion)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.BodyPart.Concussion)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.BodyPart.Fracture)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.BodyPart.Fracture)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.BodyPart.DiscHerniation)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.BodyPart.DiscHerniation)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.BodyPart.GeneralNotes)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.BodyPart.GeneralNotes)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.BodyPart.HeadR)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.BodyPart.HeadR)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.BodyPart.HeadL)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.BodyPart.HeadL)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.BodyPart.HeadF)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.BodyPart.HeadF)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.BodyPart.HeadB)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.BodyPart.HeadB)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.BodyPart.FaceR)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.BodyPart.FaceR)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.BodyPart.FaceL)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.BodyPart.FaceL)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.BodyPart.Jaw)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.BodyPart.Jaw)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.BodyPart.Teeth)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.BodyPart.Teeth)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.BodyPart.HeadNotes)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.BodyPart.HeadNotes)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.BodyPart.Neck)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.BodyPart.Neck)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.BodyPart.UpBack)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.BodyPart.UpBack)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.BodyPart.UpBackR)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.BodyPart.UpBackR)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.BodyPart.UpBackL)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.BodyPart.UpBackL)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.BodyPart.MidBack)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.BodyPart.MidBack)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.BodyPart.MidBackR)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.BodyPart.MidBackR)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.BodyPart.MidBackL)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.BodyPart.MidBackL)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.BodyPart.LowBack)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.BodyPart.LowBack)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.BodyPart.LowBackR)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.BodyPart.LowBackR)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.BodyPart.LowBackL)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.BodyPart.LowBackL)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.BodyPart.ShoulderR)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.BodyPart.ShoulderR)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.BodyPart.ShoulderL)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.BodyPart.ShoulderL)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.BodyPart.NeckAndBackNotes)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.BodyPart.NeckAndBackNotes)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.BodyPart.UpArmR)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.BodyPart.UpArmR)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.BodyPart.UpArmL)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.BodyPart.UpArmL)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.BodyPart.ElbowR)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.BodyPart.ElbowR)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.BodyPart.ElbowL)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.BodyPart.ElbowL)
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.BodyPart.ForearmR)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.BodyPart.ForearmR)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.BodyPart.ForearmL)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.BodyPart.ForearmL)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.BodyPart.WristR)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.BodyPart.WristR)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.BodyPart.WristL)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.BodyPart.WristL)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.BodyPart.HandR)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.BodyPart.HandR)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.BodyPart.HandL)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.BodyPart.HandL)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.BodyPart.FingersR)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.BodyPart.FingersR)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.BodyPart.FingersL)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.BodyPart.FingersL)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.BodyPart.ArmNotes)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.BodyPart.ArmNotes)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.BodyPart.ChestR)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.BodyPart.ChestR)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.BodyPart.ChestL)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.BodyPart.ChestL)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.BodyPart.RibsR)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.BodyPart.RibsR)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.BodyPart.RibsL)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.BodyPart.RibsL)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.BodyPart.ButtocksR)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.BodyPart.ButtocksR)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.BodyPart.ButtocksL)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.BodyPart.ButtocksL)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.BodyPart.TorsoNotes)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.BodyPart.TorsoNotes)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.BodyPart.HipR)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.BodyPart.HipR)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.BodyPart.HipL)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.BodyPart.HipL)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.BodyPart.ThighR)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.BodyPart.ThighR)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.BodyPart.ThighL)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.BodyPart.ThighL)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.BodyPart.UpLegR)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.BodyPart.UpLegR)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.BodyPart.UpLegL)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.BodyPart.UpLegL)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.BodyPart.LowLegRt)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.BodyPart.LowLegRt)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.BodyPart.LowLegR)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.BodyPart.LowLegR)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.BodyPart.KneeR)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.BodyPart.KneeR)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.BodyPart.KneeL)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.BodyPart.KneeL)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.BodyPart.AnkleR)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.BodyPart.AnkleR)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.BodyPart.AnkleL)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.BodyPart.AnkleL)
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.BodyPart.FootR)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.BodyPart.FootR)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.BodyPart.FootL)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.BodyPart.FootL)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.BodyPart.ToesR)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.BodyPart.ToesR)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.BodyPart.ToesL)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.BodyPart.ToesL)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.BodyPart.LegNotes)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.BodyPart.LegNotes)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.BodyPart.TingRArm)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.BodyPart.TingRArm)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.BodyPart.TingLArm)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.BodyPart.TingLArm)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.BodyPart.NumbRHand)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.BodyPart.NumbRHand)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.BodyPart.NumbLHand)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.BodyPart.NumbLHand)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.BodyPart.PainRArm)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.BodyPart.PainRArm)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.BodyPart.PainLArm)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.BodyPart.PainLArm)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.BodyPart.TingRLeg)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.BodyPart.TingRLeg)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.BodyPart.TingLLeg)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.BodyPart.TingLLeg)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.BodyPart.NumbRLeg)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.BodyPart.NumbRLeg)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.BodyPart.NumbLLeg)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.BodyPart.NumbLLeg)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.BodyPart.PainRLeg)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.BodyPart.PainRLeg)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.BodyPart.PainLLeg)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.BodyPart.PainLLeg)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.BodyPart.OtherNotes)
+                </div>
+                <div class="col">
+                    @Html.DisplayFor(model => model.BodyPart.OtherNotes)
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<hr/>
+
+@*Concussion*@
+<div class="mt-5">
+    <div class="row">
+        <div class="col">
+            <div class="btn-group" role="group">
+                <a asp-controller="Concussion" asp-action="CreateOrEdit" asp-route-clientId="@Model?.Id" asp-route-Id="@Model?.Concussion?.Id" class="btn btn-group btn-primary col-auto mx-2"> Concussion </a>
+            </div>
+        </div>
+        <div class="col">
+            <h2>Concussion </h2>
+        </div>
+    <div>
+    <hr />
+    <div class="row">
+        <div class="col">
+            <div class="row">
+                <div class = "col">
+                    @Html.DisplayNameFor(model => model.Concussion.HeadAches)
+                </div>
+                <div class = "col">
+                    @Html.DisplayFor(model => model.Concussion.HeadAches)
+                </div>
+            </div>
+            <div class="row">
+                <div class = "col">
+                    @Html.DisplayNameFor(model => model.Concussion.Vision)
+                </div>
+                <div class = "col">
+                    @Html.DisplayFor(model => model.Concussion.Vision)
+                </div>
+            </div>
+            <div class="row">
+                <div class = "col">
+                    @Html.DisplayNameFor(model => model.Concussion.Amnesia)
+                </div>
+                <div class = "col">
+                    @Html.DisplayFor(model => model.Concussion.Amnesia)
+                </div>
+            </div>
+            <div class="row">
+                <div class = "col">
+                    @Html.DisplayNameFor(model => model.Concussion.Smell)
+                </div>
+                <div class = "col">
+                    @Html.DisplayFor(model => model.Concussion.Smell)
+                </div>
+            </div>
+            <div class="row">
+                <div class = "col">
+                    @Html.DisplayNameFor(model => model.Concussion.Tinitus)
+                </div>
+                <div class = "col">
+                    @Html.DisplayFor(model => model.Concussion.Tinitus)
+                </div>
+            </div>
+            <div class="row">
+                <div class = "col">
+                    @Html.DisplayNameFor(model => model.Concussion.Seizures)
+                </div>
+                <div class = "col">
+                    @Html.DisplayFor(model => model.Concussion.Seizures)
+                </div>
+            </div>
+            <div class="row">
+                <div class = "col">
+                    @Html.DisplayNameFor(model => model.Concussion.Dizziness)
+                </div>
+                <div class = "col">
+                    @Html.DisplayFor(model => model.Concussion.Dizziness)
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="row">
+                <div class = "col">
+                    @Html.DisplayNameFor(model => model.Concussion.Balance)
+                </div>
+                <div class = "col">
+                    @Html.DisplayFor(model => model.Concussion.Balance)
+                </div>
+            </div>
+            <div class="row">
+                <div class = "col">
+                    @Html.DisplayNameFor(model => model.Concussion.Tremors)
+                </div>
+                <div class = "col">
+                    @Html.DisplayFor(model => model.Concussion.Tremors)
+                </div>
+            </div>
+            <div class="row">
+                <div class = "col">
+                    @Html.DisplayNameFor(model => model.Concussion.Nausea)
+                </div>
+                <div class = "col">
+                    @Html.DisplayFor(model => model.Concussion.Nausea)
+                </div>
+            </div>
+            <div class="row">
+                <div class = "col">
+                    @Html.DisplayNameFor(model => model.Concussion.Blackouts)
+                </div>
+                <div class = "col">
+                    @Html.DisplayFor(model => model.Concussion.Blackouts)
+                </div>
+            </div>
+            <div class="row">
+                <div class = "col">
+                    @Html.DisplayNameFor(model => model.Concussion.Tasks)
+                </div>
+                <div class = "col">
+                    @Html.DisplayFor(model => model.Concussion.Tasks)
+                </div>
+            </div>
+            <div class="row">
+                <div class = "col">
+                    @Html.DisplayNameFor(model => model.Concussion.Motivation)
+                </div>
+                <div class = "col">
+                    @Html.DisplayFor(model => model.Concussion.Motivation)
+                </div>
+            </div>
+            <div class="row">
+                <div class = "col">
+                    @Html.DisplayNameFor(model => model.Concussion.FinishTasks)
+                </div>
+                <div class = "col">
+                    @Html.DisplayFor(model => model.Concussion.FinishTasks)
+                </div>
+            </div>
+            <div class="row">
+                <div class = "col">
+                    @Html.DisplayNameFor(model => model.Concussion.Assert)
+                </div>
+                <div class = "col">
+                    @Html.DisplayFor(model => model.Concussion.Assert)
+                </div>
+            </div>
+            <div class="row">
+                <div class = "col">
+                    @Html.DisplayNameFor(model => model.Concussion.Forgetful)
+                </div>
+                <div class = "col">
+                    @Html.DisplayFor(model => model.Concussion.Forgetful)
+                </div>
+            </div>
+            <div class="row">
+                <div class = "col">
+                    @Html.DisplayNameFor(model => model.Concussion.AttentionSpan)
+                </div>
+                <div class = "col">
+                    @Html.DisplayFor(model => model.Concussion.AttentionSpan)
+                </div>
+            </div>
+            <div class="row">
+                <div class = "col">
+                    @Html.DisplayNameFor(model => model.Concussion.AnticipateOthers)
+                </div>
+                <div class = "col">
+                    @Html.DisplayFor(model => model.Concussion.AnticipateOthers)
+                </div>
+            </div>
+            <div class="row">
+                <div class = "col">
+                    @Html.DisplayNameFor(model => model.Concussion.ProblemSolving)
+                </div>
+                <div class = "col">
+                    @Html.DisplayFor(model => model.Concussion.ProblemSolving)
+                </div>
+            </div>
+            <div class="row">
+                <div class = "col">
+                    @Html.DisplayNameFor(model => model.Concussion.MentalStamina)
+                </div>
+                <div class = "col">
+                    @Html.DisplayFor(model => model.Concussion.MentalStamina)
+                </div>
+            </div>
+            <div class="row">
+                <div class = "col">
+                    @Html.DisplayNameFor(model => model.Concussion.Reading)
+                </div>
+                <div class = "col">
+                    @Html.DisplayFor(model => model.Concussion.Reading)
+                </div>
+            </div>
+            <div class="row">
+                <div class = "col">
+                    @Html.DisplayNameFor(model => model.Concussion.Performance)
+                </div>
+                <div class = "col">
+                    @Html.DisplayFor(model => model.Concussion.Performance)
+                </div>
+            </div>
+            <div class="row">
+                <div class = "col">
+                    @Html.DisplayNameFor(model => model.Concussion.LanguageDifficulty)
+                </div>
+                <div class = "col">
+                    @Html.DisplayFor(model => model.Concussion.LanguageDifficulty)
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="row">
+                <div class = "col">
+                    @Html.DisplayNameFor(model => model.Concussion.Verbal)
+                </div>
+                <div class = "col">
+                    @Html.DisplayFor(model => model.Concussion.Verbal)
+                </div>
+            </div>
+            <div class="row">
+                <div class = "col">
+                    @Html.DisplayNameFor(model => model.Concussion.ImpairedJudgement)
+                </div>
+                <div class = "col">
+                    @Html.DisplayFor(model => model.Concussion.ImpairedJudgement)
+                </div>
+            </div>
+            <div class="row">
+                <div class = "col">
+                    @Html.DisplayNameFor(model => model.Concussion.Reactions)
+                </div>
+                <div class = "col">
+                    @Html.DisplayFor(model => model.Concussion.Reactions)
+                </div>
+            </div>
+            <div class="row">
+                <div class = "col">
+                    @Html.DisplayNameFor(model => model.Concussion.NotesTimer)
+                </div>
+                <div class = "col">
+                    @Html.DisplayFor(model => model.Concussion.NotesTimer)
+                </div>
+            </div>
+            <div class="row">
+                <div class = "col">
+                    @Html.DisplayNameFor(model => model.Concussion.AbnormalAnxiety)
+                </div>
+                <div class = "col">
+                    @Html.DisplayFor(model => model.Concussion.AbnormalAnxiety)
+                </div>
+            </div>
+            <div class="row">
+                <div class = "col">
+                    @Html.DisplayNameFor(model => model.Concussion.Rude)
+                </div>
+                <div class = "col">
+                    @Html.DisplayFor(model => model.Concussion.Rude)
+                </div>
+            </div>
+            <div class="row">
+                <div class = "col">
+                    @Html.DisplayNameFor(model => model.Concussion.Personality)
+                </div>
+                <div class = "col">
+                    @Html.DisplayFor(model => model.Concussion.Personality)
+                </div>
+            </div>
+            <div class="row">
+                <div class = "col">
+                    @Html.DisplayNameFor(model => model.Concussion.Mood)
+                </div>
+                <div class = "col">
+                    @Html.DisplayFor(model => model.Concussion.Mood)
+                </div>
+            </div>
+            <div class="row">
+                <div class = "col">
+                    @Html.DisplayNameFor(model => model.Concussion.Depression)
+                </div>
+                <div class = "col">
+                    @Html.DisplayFor(model => model.Concussion.Depression)
+                </div>
+            </div>
+            <div class="row">
+                <div class = "col">
+                    @Html.DisplayNameFor(model => model.Concussion.Indifference)
+                </div>
+                <div class = "col">
+                    @Html.DisplayFor(model => model.Concussion.Indifference)
+                </div>
+            </div>
+            <div class="row">
+                <div class = "col">
+                    @Html.DisplayNameFor(model => model.Concussion.Fatigue)
+                </div>
+                <div class = "col">
+                    @Html.DisplayFor(model => model.Concussion.Fatigue)
+                </div>
+            </div>
+            <div class="row">
+                <div class = "col">
+                    @Html.DisplayNameFor(model => model.Concussion.Shallow)
+                </div>
+                <div class = "col">
+                    @Html.DisplayFor(model => model.Concussion.Shallow)
+                </div>
+            </div>
+            <div class="row">
+                <div class = "col">
+                    @Html.DisplayNameFor(model => model.Concussion.MentalFlex)
+                </div>
+                <div class = "col">
+                    @Html.DisplayFor(model => model.Concussion.MentalFlex)
+                </div>
+            </div>
+            <div class="row">
+                <div class = "col">
+                    @Html.DisplayNameFor(model => model.Concussion.Note)
+                </div>
+                <div class = "col">
+                    @Html.DisplayFor(model => model.Concussion.Note)
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<hr/>
+
+@*Psychotherapy*@
+<div class="mt-5">
+    <div class="row">
+        <div class="col">
+            <div class="btn-group" role="group">
+                <a asp-controller="Psychotherapy" asp-action="CreateOrEdit" asp-route-clientId="@Model?.Id" asp-route-Id="@Model?.Psychotherapy?.Id" class="btn btn-group btn-primary col-auto mx-2"> Psychological Injuries </a>
+            </div>
+        </div>
+        <div class="col">
+            <h2>Psychological Injuries</h2>
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col">
+            <div class="row">
+                <div class = "col">
+                    @Html.DisplayNameFor(model => model.Psychotherapy.Stressed)
+                </div>
+                <div class = "col">
+                    @Html.DisplayFor(model => model.Psychotherapy.Stressed)
+                </div>
+            </div>
+            <div class="row">
+                <div class = "col">
+                    @Html.DisplayNameFor(model => model.Psychotherapy.Sad)
+                </div>
+                <div class = "col">
+                    @Html.DisplayFor(model => model.Psychotherapy.Sad)
+                </div>
+            </div>
+            <div class="row">
+                <div class = "col">
+                    @Html.DisplayNameFor(model => model.Psychotherapy.NervousDepressed)
+                </div>
+                <div class = "col">
+                    @Html.DisplayFor(model => model.Psychotherapy.NervousDepressed)
+                </div>
+            </div>
+            <div class="row">
+                <div class = "col">
+                    @Html.DisplayNameFor(model => model.Psychotherapy.Irritable)
+                </div>
+                <div class = "col">
+                    @Html.DisplayFor(model => model.Psychotherapy.Irritable)
+                </div>
+            </div>
+            <div class="row">
+                <div class = "col">
+                    @Html.DisplayNameFor(model => model.Psychotherapy.Restless)
+                </div>
+                <div class = "col">
+                    @Html.DisplayFor(model => model.Psychotherapy.Restless)
+                </div>
+            </div>
+            <div class="row">
+                <div class = "col">
+                    @Html.DisplayNameFor(model => model.Psychotherapy.SleepTrouble)
+                </div>
+                <div class = "col">
+                    @Html.DisplayFor(model => model.Psychotherapy.SleepTrouble)
+                </div>
+            </div>
+            <div class="row">
+                <div class = "col">
+                    @Html.DisplayNameFor(model => model.Psychotherapy.Flashbacks)
+                </div>
+                <div class = "col">
+                    @Html.DisplayFor(model => model.Psychotherapy.Flashbacks)
+                </div>
+            </div>            
+            <div class="row">
+                <div class = "col">
+                    @Html.DisplayNameFor(model => model.Psychotherapy.Nightmares)
+                </div>
+                <div class = "col">
+                    @Html.DisplayFor(model => model.Psychotherapy.Nightmares)
+                </div>
+            </div>
+            <div class="row">
+                <div class = "col">
+                    @Html.DisplayNameFor(model => model.Psychotherapy.MemoryProblems)
+                </div>
+                <div class = "col">
+                    @Html.DisplayFor(model => model.Psychotherapy.MemoryProblems)
+                </div>
+            </div>
+            <div class="row">
+                <div class = "col">
+                    @Html.DisplayNameFor(model => model.Psychotherapy.AfraidDriving)
+                </div>
+                <div class = "col">
+                    @Html.DisplayFor(model => model.Psychotherapy.AfraidDriving)
+                </div>
+            </div>
+            <div class="row">
+                <div class = "col">
+                    @Html.DisplayNameFor(model => model.Psychotherapy.AfraidPassenger)
+                </div>
+                <div class = "col">
+                    @Html.DisplayFor(model => model.Psychotherapy.AfraidPassenger)
+                </div>
+            </div>
+            <div class="row">
+                <div class = "col">
+                    @Html.DisplayNameFor(model => model.Psychotherapy.RelationshipsAffected)
+                </div>
+                <div class = "col">
+                    @Html.DisplayFor(model => model.Psychotherapy.RelationshipsAffected)
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="row">
+                <div class = "col">
+                    @Html.DisplayNameFor(model => model.Psychotherapy.DifficultyWActivities)
+                </div>
+                <div class = "col">
+                    @Html.DisplayFor(model => model.Psychotherapy.DifficultyWActivities)
+                </div>
+            </div>
+            <div class="row">
+                <div class = "col">
+                    @Html.DisplayNameFor(model => model.Psychotherapy.LowEnergy)
+                </div>
+                <div class = "col">
+                    @Html.DisplayFor(model => model.Psychotherapy.LowEnergy)
+                </div>
+            </div>
+            <div class="row">
+                <div class = "col">
+                    @Html.DisplayNameFor(model => model.Psychotherapy.Apathy)
+                </div>
+                <div class = "col">
+                    @Html.DisplayFor(model => model.Psychotherapy.Apathy)
+                </div>
+            </div>
+            <div class="row">
+                <div class = "col">
+                    @Html.DisplayNameFor(model => model.Psychotherapy.Avoidance)
+                </div>
+                <div class = "col">
+                    @Html.DisplayFor(model => model.Psychotherapy.Avoidance)
+                </div>
+            </div>
+            <div class="row">
+                <div class = "col">
+                    @Html.DisplayNameFor(model => model.Psychotherapy.Other)
+                </div>
+                <div class = "col">
+                    @Html.DisplayFor(model => model.Psychotherapy.Other)
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*Appointments - ask Lucie*@
+<div class="mt-5">
+    <div class="row">
+        <div class="col">
+            <div class="btn-group" role="group">
+                <a asp-controller="Appointment" asp-action="CreateOrEdit" asp-route-clientId="@Model?.Id" class="btn btn-group btn-primary col-auto mx-2">Create a new Appointment </a>
+            </div>
+        </div>
+        <div class="col">
+            <h2>Appointments </h2>
+        </div>
+    <hr />
+    @if (Model?.Appointments != null)
+                {
+                    @foreach (var appointment in Model.Appointments.ToList())
+                    {
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="btn-group" role="group">
+                                    <a asp-controller="Appointment" asp-action="CreateOrEdit" asp-route-clientId="@Model?.Id" asp-route-Id="@appointment.Id" class="btn btn-group btn-primary col-auto mx-2">Modify Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="row">
+                                    <div class = "col">
+                                        @Html.DisplayNameFor(model => appointment.Title)
+                                    </div>
+                                    <div class = "col">
+                                        @Html.DisplayFor(model => appointment.Title)
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class = "col">
+                                        @Html.DisplayNameFor(model => appointment.Description)
+                                    </div>
+                                    <div class = "col">
+                                        @Html.DisplayFor(model => appointment.Description)
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="row">
+                                    <div class = "col">
+                                        @Html.DisplayNameFor(model => appointment.Duration)
+                                    </div>
+                                    <div class = "col">
+                                        @Html.DisplayFor(model => appointment.Duration)
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class = "col">
+                                        @Html.DisplayNameFor(model => appointment.Start)
+                                    </div>
+                                    <div class = "col">
+                                        @Html.DisplayFor(model => appointment.Start)
+                                    </div>
+                                </div>
+                            </div>
+                            <hr/>
+                        </div>
+                    }
+                }
+    </div>
+    <hr/>
+
+    @*Insurance Claim - ask Lucie*@
+    <div class="mt-5">
+        <div class="row">
+            <div class="col">
+                <div class="btn-group" role="group">
+                    <a asp-controller="InsuranceClaim" asp-action="CreateOrEdit" asp-route-clientId="@Model?.Id" asp-route-Id="@Model?.InsuranceClaim?.Id" class="btn btn-group btn-primary col-auto mx-2">Create Insurance Claim </a>
+                </div>
+            </div>
+            <div class="col">
+                <h2>Insurance Claim</h2>
+            </div>
+        </div>
+        <hr />
+        @if(Model?.InsuranceClaim?.InsuranceCompany?.InsuranceCompanyContacts != null)
+        {
+            @foreach (var contact in Model.InsuranceClaim.InsuranceCompany.InsuranceCompanyContacts.ToList())
+            {
+            <div class="row">
+                <legend>Insurance </legend>
+                <div class="col">
+                    <div class="row">
+                        <div class = "col">
+                            @Html.DisplayNameFor(model => model.InsuranceClaim.Claimref)
+                        </div>
+                        <div class = "col">
+                            @Html.DisplayFor(model => model.InsuranceClaim.Claimref)
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class = "col">
+                            @Html.DisplayNameFor(model => model.InsuranceClaim.OtherClaimRef)
+                        </div>
+                        <div class = "col">
+                            @Html.DisplayFor(model => model.InsuranceClaim.OtherClaimRef)
+                        </div>
+                    </div>
+                    <legend>Insurance Company Name</legend>
+                    <div class="row">
+                        <div class="col">
+                            @Html.DisplayNameFor(model => model.InsuranceClaim.InsuranceCompany.Title)
+                        </div>
+                        <div class="col">
+                            @Html.DisplayFor(model => model.InsuranceClaim.InsuranceCompany.Title)
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <legend>Insurance Company Contacts</legend>
+                    <div class="row">
+                        <div class="col">
+                            @Html.DisplayNameFor(model => contact.Title)
+                        </div>
+                        <div class="col">
+                            @Html.DisplayFor(model => contact.Title)
+                        </div>
+                    </div>
+                    @if (contact?.Email != null)
+                    {
+                        <div class="row">
+                            <div class="col">
+                                @Html.DisplayNameFor(model => contact.Email)
+                            </div>
+                            <div class="col">
+                                @Html.DisplayFor(model => contact.Email)
+                            </div>
+                        </div>
+                    }
+
+                    @if (contact?.CellPhone != null)
+                    {
+                        <div class="row">
+                            <div class="col">
+                                @Html.DisplayNameFor(model => contact.CellPhone)
+                            </div>
+                            <div class="col">
+                                <a href="tel:@Html.DisplayFor(model => model.CellPhone)">@Html.DisplayFor(model => contact.CellPhone)</a>
+                            </div>
+                        </div>
+                    }
+
+                    @if (contact?.Telephone != null)
+                    {
+                        <div class="row">
+                            <div class="col">
+                                @Html.DisplayNameFor(model => contact.Telephone)
+                            </div>
+                            <div class="col">
+                                <a href="tel:@Html.DisplayFor(model => model.Telephone)">@Html.DisplayFor(model => contact.Telephone)</a>
+                            </div>
+                        </div>
+                    }
+
+                    @if (contact?.Fax != null)
+                    {
+                        <div class="row">
+                            <div class="col">
+                                @Html.DisplayNameFor(model => contact.Fax)
+                            </div>
+                            <div class="col">
+                                <a href="tel:@Html.DisplayFor(model => model.Fax)">@Html.DisplayFor(model => contact.Fax)</a>
+                            </div>
+                        </div>
+                    }
+
+                    <div class="row">
+                        <div class="col">
+                            @Html.DisplayNameFor(model => contact.Address)
+                        </div>
+                        <div class="col">
+                            @Html.DisplayFor(model => contact.Address) <br />
+                            @Html.DisplayFor(model => contact.City), @Html.DisplayFor(model => contact.Region) <br />
+                            @Html.DisplayFor(model => contact.Country) <br />
+                            @Html.DisplayFor(model => contact.PostalCode)
+                        </div>
+                    </div>
+                </div>
+            </div>
+            }
+        }
+</div>
+
+<div class="row-sm-4 text-center mt-5">
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+</div>
+
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

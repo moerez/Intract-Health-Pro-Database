@@ -1,0 +1,451 @@
+@model InteractHealthProDatabase.Models.AccidentDetail
+@using InteractHealthProDatabase.Models.Enums;
+
+@{
+    bool isEdit = Model.Id != 0;
+    ViewData["Title"] = isEdit ? "Edit" : "Create";
+}
+
+<h4>Accident</h4>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="CreateOrEdit" asp-route-id="@Model.Id"  asp-route-clientId='@ViewBag.ClientId'>
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <h4 class="col">@(isEdit ? "Edit" : "New") Accident</h4>
+                <label asp-for="Client.Id" class="control-label mb-2">Client ID: @ViewBag.ClientId</label>
+                <input type="hidden" asp-for="AccidentVehicle.Id" />
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label asp-for="DateTimeAcc" class="control-label"></label>
+                        <input asp-for="DateTimeAcc" class="form-control" />
+                        <span asp-validation-for="DateTimeAcc" class="text-danger"></span>
+                    </div>
+               </div>
+               <div class="col-md-5">
+                  <div class="form-group">
+                     <label asp-for="FMedVisit" class="control-label"></label>
+                     <select asp-for="FMedVisit" asp-items="@Html.GetEnumSelectList<VisitTypeEnum>()" class="form-control form-select">
+                         <option selected="selected" value="">Please select Visit type</option>
+                     </select>
+                     <span asp-validation-for="FMedVisit" class="text-danger"></span>
+                  </div>
+               </div>
+               <div class="col-md-4">
+                  <div class="form-group">
+                     <label asp-for="MedicalHistoryUrl" class="control-label"></label>
+                     <input asp-for="MedicalHistoryUrl" class="form-control" />
+                     <span asp-validation-for="MedicalHistoryUrl" class="text-danger"></span>
+                  </div>
+               </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="Weather" class="control-label"></label>
+                        <select asp-for="Weather" asp-items="@Html.GetEnumSelectList<WeatherEnum>()" class="form-control form-select">
+                            <option selected="selected" value="">Please select Weather</option>
+                        </select>
+                        <span asp-validation-for="Weather" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="Visibility" class="control-label"></label>
+                        <select asp-for="Visibility" asp-items="@Html.GetEnumSelectList<VisibilityEnum>()" class="form-control form-select">
+                            <option selected="selected" value="">Please select Visibility</option>
+                        </select>
+                        <span asp-validation-for="Visibility" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="RoadCondition" class="control-label"></label>
+                        <select asp-for="RoadCondition" asp-items="@Html.GetEnumSelectList<RoadConditionEnum>()" class="form-control form-select">
+                            <option selected="selected" value="">Please select Road Condition</option>
+                        </select>
+                        <span asp-validation-for="RoadCondition" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="AccidentLocation" class="control-label"></label>
+                <textarea asp-for="AccidentLocation" rows="2" class="form-control"></textarea>
+                <span asp-validation-for="AccidentLocation" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AccidentDesc" class="control-label"></label>
+                <textarea asp-for="AccidentDesc" rows="3" class="form-control"></textarea>
+                <span asp-validation-for="AccidentDesc" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label class="mt-2 fw-bold">Police information</label>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="PoliceName" class="control-label">Offier name</label>
+                        <input asp-for="PoliceName" class="form-control" />
+                        <span asp-validation-for="PoliceName" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                       <label asp-for="PoliceBadgeNo" class="control-label"></label>
+                       <input asp-for="PoliceBadgeNo" class="form-control" />
+                       <span asp-validation-for="PoliceBadgeNo" class="text-danger"></span>
+                     </div>
+                 </div>
+                 <div class="col-md-3">
+                    <div class="form-group">
+                       <label asp-for="PoliceReportAccDate" class="control-label"></label>
+                       <input asp-for="PoliceReportAccDate" class="form-control" />
+                       <span asp-validation-for="PoliceReportAccDate" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-8">
+                  <div class="form-group">
+                     <label asp-for="PoliceDept" class="control-label"></label>
+                     <input asp-for="PoliceDept" class="form-control" />
+                     <span asp-validation-for="PoliceDept" class="text-danger"></span>
+                   </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group mt-4 text-end">
+                       <label asp-for="PoliceCharge" class="form-check-label">Were you charged?&nbsp;&nbsp;</label>
+                       <div class="form-check form-check-inline">
+                            <input asp-for="PoliceCharge" class="form-check-input" type="radio" value="true" />
+                            <label asp-for="PoliceCharge" class="form-check-label">Yes</label>
+                       </div>
+                        <div class="form-check form-check-inline">
+                            <input asp-for="PoliceCharge" class="form-check-input" type="radio" value="false" checked />
+                            <label asp-for="PoliceCharge" class="form-check-label">No</label>
+                        </div>
+                       <span asp-validation-for="PoliceCharge" class="text-danger small"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="PoliceReportCenter" class="control-label">Police reporting center</label>
+                <input asp-for="PoliceReportCenter" class="form-control" />
+                <span asp-validation-for="PoliceReportCenter" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label class="mt-2 fw-bold">Emergency service at scene</label>
+            </div>
+            <div class="row mt-2">
+                <div class="col-md-2">
+                    <div class="form-group form-check">
+                        <label class="form-check-label">
+                            <input type="checkbox" class="form-check-input" asp-for="EmeAtScenePolice" value="true" >Police
+                        </label>
+                        <span asp-validation-for="EmeAtScenePolice" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group form-check">
+                        <label class="form-check-label">
+                            <input type="checkbox" class="form-check-input" asp-for="EmeAtSceneAmbulance" value="true" />Ambulance
+                        </label>
+                        <span asp-validation-for="EmeAtSceneAmbulance" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group form-check">
+                        <label class="form-check-label">
+                            <input type="checkbox" class="form-check-input" asp-for="EmeAtSceneFirefighters" value="true" />FireFighters
+                        </label>
+                        <span asp-validation-for="EmeAtSceneFirefighters" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group form-check">
+                        <label class="form-check-label">
+                            <input type="checkbox" class="form-check-input" asp-for="EmeAtSceneTowing" value="true" />Towing
+                        </label>
+                        <span asp-validation-for="EmeAtSceneTowing" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group form-check">
+                        <label class="form-check-label">
+                            <input type="checkbox" class="form-check-input" asp-for="EmeAtSceneNoOneCame" value="true" />No one came
+                        </label>
+                        <span asp-validation-for="EmeAtSceneNoOneCame" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+               <label asp-for="TakeByAmbulance" class="form-check-label">Taken by ambulance&nbsp;&nbsp;</label>
+               <div class="form-check form-check-inline">
+                   <input asp-for="TakeByAmbulance" class="form-check-input" type="radio" value="true" />
+                   <label asp-for="TakeByAmbulance" class="form-check-label">Yes</label>
+               </div>
+               <div class="form-check form-check-inline">
+                   <input asp-for="TakeByAmbulance" class="form-check-input" type="radio" value="false" checked />
+                   <label asp-for="TakeByAmbulance" class="form-check-label">No</label>
+               </div>
+               <span asp-validation-for="TakeByAmbulance" class="text-danger small"></span>
+          </div>
+
+          <div class="form-group">
+             <label asp-for="Note" class="control-label"></label>
+             <textarea asp-for="Note" rows="3" class="form-control"></textarea>
+             <span asp-validation-for="Note" class="text-danger"></span>
+          </div>
+
+          <hr />
+          <h4>Accident Vehicle</h4>
+            
+          <div class="row">
+                @* AccidentVehicle *@
+              <div class="col-md-4">                   
+                    <div class="form-group">
+                        <label asp-for="AccidentVehicle.TransportType" class="control-label"></label>
+                        <select asp-for="AccidentVehicle.TransportType" asp-items="@Html.GetEnumSelectList<TransportTypeEnum>()" class="form-control form-select">
+                            <option selected="selected" value="">Select type Transportation</option>
+                        </select>
+                        <span asp-validation-for="AccidentVehicle.TransportType" class="text-danger"></span>
+                    </div>
+              </div>
+              <div class="col-md-4">
+                  <div class="form-group">
+                        <label asp-for="AccidentVehicle.DriverPosition" class="control-label"></label>
+                        <select asp-for="AccidentVehicle.DriverPosition" asp-items="@Html.GetEnumSelectList<DriverPositionEnum>()" class="form-control form-select">
+                         <option selected="selected" value="">Select in Vehicle position</option>
+                     </select>
+                        <span asp-validation-for="AccidentVehicle.DriverPosition" class="text-danger"></span>
+                 </div>
+              </div>
+          </div>
+          <div class="row mt-2">
+                <div class="col-md-2">
+                    <div class="form-group form-check">
+                        <label class="form-check-label">
+                            <input type="checkbox" asp-for="AccidentVehicle.Seatbelt" class="form-check-input" value="true" />Wearing seatbelt
+                        </label>
+                        <span asp-validation-for="AccidentVehicle.Seatbelt" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group form-check">
+                        <label class="form-check-label">
+                            <input type="checkbox" asp-for="AccidentVehicle.AirbagDeploy" class="form-check-input" value="true" />Airbags deploy
+                        </label>
+                        <span asp-validation-for="AccidentVehicle.AirbagDeploy" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group form-check">
+                        <label class="form-check-label">
+                            <input type="checkbox" asp-for="AccidentVehicle.Bracing" class="form-check-input" value="true" />Bracing
+                        </label>
+                        <span asp-validation-for="AccidentVehicle.Bracing" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group form-check">
+                        <label class="form-check-label">
+                            <input type="checkbox" asp-for="AccidentVehicle.Anticipated" class="form-check-input" value="true" />Bracing
+                        </label>
+                        <span asp-validation-for="AccidentVehicle.Anticipated" class="text-danger"></span>
+                    </div>
+                </div>
+          </div>
+
+          <div class="form-group">
+             <label class="mt-2 fw-bold">Vehicle info</label>
+          </div>
+          <div class="row">
+             <div class="col-md-6">
+                <div class="form-group">
+                   <label asp-for="AccidentVehicle.Make" class="control-label"></label>
+                   <input asp-for="AccidentVehicle.Make" class="form-control" />
+                   <span asp-validation-for="AccidentVehicle.Make" class="text-danger"></span>
+                </div>
+             </div>
+             <div class="col-md-6">
+                <div class="form-group">
+                   <label asp-for="AccidentVehicle.Model" class="control-label"></label>
+                   <input asp-for="AccidentVehicle.Model" class="form-control" />
+                   <span asp-validation-for="AccidentVehicle.Model" class="text-danger"></span>
+                </div>
+             </div>
+          </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="AccidentVehicle.Year" class="control-label"></label>
+                        <input asp-for="AccidentVehicle.Year" class="form-control" />
+                        <span asp-validation-for="AccidentVehicle.Year" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="AccidentVehicle.License" class="control-label"></label>
+                        <input asp-for="AccidentVehicle.License" class="form-control" />
+                        <span asp-validation-for="AccidentVehicle.License" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="mt-2 fw-bold">Other vehicle details</label>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="AccidentVehicle.VehiclePersName" class="control-label"></label>
+                        <input asp-for="AccidentVehicle.VehiclePersName" class="form-control" />
+                        <span asp-validation-for="AccidentVehicle.VehiclePersName" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="AccidentVehicle.VehicleNoPeople" class="control-label"></label>
+                        <input asp-for="AccidentVehicle.VehicleNoPeople" class="form-control" />
+                        <span asp-validation-for="AccidentVehicle.VehicleNoPeople" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="AccidentVehicle.OtherLiableParties" class="control-label"></label>
+                        <input asp-for="AccidentVehicle.OtherLiableParties" class="form-control" />
+                        <span asp-validation-for="AccidentVehicle.OtherLiableParties" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group form-check mt-4">
+                        <label class="form-check-label">
+                            <input type="checkbox" asp-for="AccidentVehicle.DroveFrmScene" class="form-check-input" value="true" />Drove from scene
+                        </label>
+                        <span asp-validation-for="AccidentVehicle.DroveFrmScene" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+          <div class="form-group">
+             <label class="mt-2 fw-bold">MVA insurance information</label>
+          </div>
+          <div class="row">
+             <div class="col-md-6">
+                <div class="form-group">
+                        <label asp-for="AccidentVehicle.MvaCoName" class="control-label">Co. name</label>
+                        <input asp-for="AccidentVehicle.MvaCoName" class="form-control" />
+                        <span asp-validation-for="AccidentVehicle.MvaCoName" class="text-danger"></span>
+                </div>
+             </div>
+             <div class="col-md-3">
+               <div class="form-group">
+                  <label asp-for="AccidentVehicle.MvaPolicyNo" class="control-label">Policy no</label>
+                  <input asp-for="AccidentVehicle.MvaPolicyNo" class="form-control" />
+                  <span asp-validation-for="AccidentVehicle.MvaPolicyNo" class="text-danger"></span>
+              </div>
+            </div>
+            <div class="col-md-3">
+               <div class="form-group">
+                 <label asp-for="AccidentVehicle.MvaClaimNo" class="control-label">Claim no</label>
+                 <input asp-for="AccidentVehicle.MvaClaimNo" class="form-control" />
+                 <span asp-validation-for="AccidentVehicle.MvaClaimNo" class="text-danger"></span>
+              </div>
+            </div>
+          </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="AccidentVehicle.MvaAdjuster" class="control-label">Adjuster</label>
+                        <input asp-for="AccidentVehicle.MvaAdjuster" class="form-control" />
+                        <span asp-validation-for="AccidentVehicle.MvaAdjuster" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="AccidentVehicle.MvaTel" class="control-label">Telephone</label>
+                        <input asp-for="AccidentVehicle.MvaTel" class="form-control" />
+                        <span asp-validation-for="AccidentVehicle.MvaTel" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="AccidentVehicle.MvaFax" class="control-label">Fax</label>
+                        <input asp-for="AccidentVehicle.MvaFax" class="form-control" />
+                        <span asp-validation-for="AccidentVehicle.MvaFax" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+          <div class="row">
+            <div class="col-md-6">
+               <div class="form-group">
+                  <label asp-for="AccidentVehicle.MvaEmail" class="control-label">Email</label>
+                  <input asp-for="AccidentVehicle.MvaEmail" class="form-control" />
+                  <span asp-validation-for="AccidentVehicle.MvaEmail" class="text-danger"></span>
+               </div>
+             </div>
+          </div>
+
+          <div class="row">
+             <div class="form-group">
+                <label asp-for="AccidentVehicle.MvaAddress" class="control-label">Address</label>
+                <input asp-for="AccidentVehicle.MvaAddress" class="form-control" />
+                <span asp-validation-for="AccidentVehicle.MvaAddress" class="text-danger"></span>
+             </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-4">
+               <div class="form-group">
+                 <label asp-for="AccidentVehicle.MvaCity" class="control-label">City</label>
+                 <input asp-for="AccidentVehicle.MvaCity" class="form-control" />
+                 <span asp-validation-for="AccidentVehicle.MvaCity" class="text-danger"></span>
+               </div>
+           </div>
+           <div class="col-md-4">
+              <div class="form-group">
+                 <label asp-for="AccidentVehicle.MvaProv" class="control-label">Province</label>
+                 <input asp-for="AccidentVehicle.MvaProv" class="form-control" />
+                 <span asp-validation-for="AccidentVehicle.MvaProv" class="text-danger"></span>
+              </div>
+           </div>
+           <div class="col-md-4">
+              <div class="form-group">
+                 <label asp-for="AccidentVehicle.MvaPC" class="control-label">Postal code</label>
+                 <input asp-for="AccidentVehicle.MvaPC" class="form-control" />
+                 <span asp-validation-for="AccidentVehicle.MvaPC" class="text-danger"></span>
+              </div>
+           </div>
+        </div>
+
+          <div class="row mt-4">
+             <div class="col-md-1">
+                <div class="form-group">
+                        <input type="submit" value="Submit" class="btn btn-primary"/>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       />
+                </div>
+             </div>
+             <div class="col-md-1">
+                    <button class="btn btn-danger" onclick="Javascript:window.history.back(1); return false;">Cancel</button>
+             </div>
+          </div>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

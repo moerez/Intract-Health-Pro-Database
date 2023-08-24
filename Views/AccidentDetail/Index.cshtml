@@ -1,0 +1,227 @@
+@model IEnumerable<InteractHealthProDatabase.Models.AccidentDetail>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Accident Index</h1>
+@Html.AntiForgeryToken()
+
+<p>
+    <a asp-controller="Home" class="btn btn-primary">Back</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Action</th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateTimeAcc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MedicalHistoryUrl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FMedVisit)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Weather)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Visibility)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RoadCondition)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AccidentLocation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AccidentDesc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PoliceName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PoliceBadgeNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PoliceDept)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PoliceReportAccDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PoliceReportCenter)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PoliceCharge)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmeAtScenePolice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmeAtSceneAmbulance)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmeAtSceneFirefighters)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmeAtSceneTowing)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmeAtSceneNoOneCame)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TakeByAmbulance)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Note)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+           <td>
+              <div class="btn-group" role="group">
+                 <a asp-action="CreateOrEdit" asp-route-id="@item.Id" class="btn btn-warning">
+                     <i class="fa-regular fa-pen-to-square"></i>
+                 </a>
+                 <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info">
+                     <i class="fa-solid fa-info"></i>
+                 </a>
+                 <!--     <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>  -->
+                 <a class="btn btn-danger"
+                    onclick="AjaxConfirmDelete('@item.Id')">
+                      <i class="fa-regular fa-trash-alt"></i>
+                 </a>
+              </div>
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.DateTimeAcc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MedicalHistoryUrl)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FMedVisit)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Weather)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Visibility)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RoadCondition)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AccidentLocation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AccidentDesc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PoliceName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PoliceBadgeNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PoliceDept)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PoliceReportAccDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PoliceReportCenter)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PoliceCharge)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmeAtScenePolice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmeAtSceneAmbulance)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmeAtSceneFirefighters)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmeAtSceneTowing)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmeAtSceneNoOneCame)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TakeByAmbulance)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Note)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+<div id="confirmDeleteModal" class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-warning">
+                <h5 class="modal-title">Confirm Delete</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="id" class="form-control" />
+                <p id="modalBodyMsg">Body Message</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button id="btnDeleteModal" type="button" class="btn btn-danger">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            var notifyMsg = '@TempData["NotifyMsg"]';  // Display NotifyMsg if any
+            if (notifyMsg != '') {
+                $.notify(notifyMsg, { globalPosition: 'top center', className: '@TempData["NotifyClassName"]' });
+                console.log(notifyMsg);
+            }
+
+            $("#btnDeleteModal").on("click", function () {
+                let id = $("#id").val();
+                let token = $('input[name="__RequestVerificationToken"]').val();   // AntiForgeryToken
+                $.ajax({   // Call Delete controller
+                    type: 'POST',
+                    url: "@Url.Action("Delete")",
+                    data: {
+                        __RequestVerificationToken: token,
+                        id: id
+                    },
+                    success: function (response) {
+                        if (response.result == true) {
+                            $('#confirmDeleteModal').modal('hide');  // close Modal dialog
+                            window.location.reload();
+                        } else {
+                            console.log("Error in Deletion");
+                        }
+                    }
+                })
+            })
+        })
+
+        function AjaxConfirmDelete( id ) {
+            $("#id").val(id);
+            document.getElementById("modalBodyMsg").innerHTML = "Are you sure to delete Accident Detail ID: " + id + " ?";
+            $('#confirmDeleteModal').modal('show');  // Open Modal dialog
+        }
+    </script>
+}

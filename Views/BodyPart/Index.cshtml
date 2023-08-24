@@ -1,0 +1,486 @@
+@model IEnumerable<InteractHealthProDatabase.Models.BodyPart>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="CreateOrEdit">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Concussion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fracture)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DiscHerniation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GeneralNotes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HeadR)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HeadL)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HeadF)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HeadB)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FaceR)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FaceL)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Jaw)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Teeth)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HeadNotes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Neck)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UpBack)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UpBackR)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UpBackL)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MidBack)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MidBackR)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MidBackL)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LowBack)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LowBackR)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LowBackL)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ShoulderR)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ShoulderL)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NeckAndBackNotes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UpArmR)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UpArmL)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ElbowR)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ElbowL)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ForearmR)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ForearmL)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WristR)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WristL)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HandR)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HandL)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FingersR)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FingersL)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ArmNotes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ChestR)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ChestL)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RibsR)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RibsL)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ButtocksR)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ButtocksL)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TorsoNotes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HipR)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HipL)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ThighR)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ThighL)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UpLegR)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UpLegL)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LowLegRt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LowLegR)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.KneeR)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.KneeL)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AnkleR)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AnkleL)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FootR)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FootL)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ToesR)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ToesL)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LegNotes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TingRArm)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TingLArm)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumbRHand)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumbLHand)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PainRArm)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PainLArm)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TingRLeg)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TingLLeg)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumbRLeg)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumbLLeg)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PainRLeg)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PainLLeg)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OtherNotes)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Concussion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Fracture)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DiscHerniation)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GeneralNotes)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HeadR)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HeadL)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HeadF)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HeadB)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FaceR)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FaceL)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Jaw)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Teeth)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HeadNotes)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Neck)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UpBack)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UpBackR)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UpBackL)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MidBack)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MidBackR)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MidBackL)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LowBack)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LowBackR)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LowBackL)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ShoulderR)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ShoulderL)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NeckAndBackNotes)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UpArmR)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UpArmL)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ElbowR)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ElbowL)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ForearmR)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ForearmL)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.WristR)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.WristL)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HandR)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HandL)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FingersR)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FingersL)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ArmNotes)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ChestR)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ChestL)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RibsR)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RibsL)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ButtocksR)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ButtocksL)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TorsoNotes)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HipR)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HipL)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ThighR)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ThighL)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UpLegR)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UpLegL)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LowLegRt)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LowLegR)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.KneeR)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.KneeL)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AnkleR)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AnkleL)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FootR)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FootL)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ToesR)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ToesL)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LegNotes)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TingRArm)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TingLArm)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NumbRHand)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NumbLHand)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PainRArm)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PainLArm)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TingRLeg)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TingLLeg)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NumbRLeg)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NumbLLeg)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PainRLeg)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PainLLeg)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OtherNotes)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

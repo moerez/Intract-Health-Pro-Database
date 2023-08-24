@@ -1,0 +1,458 @@
+@model InteractHealthProDatabase.Models.BodyPart
+
+@{
+    bool isEdit = Model.Id != 0;
+    ViewData["Title"] = isEdit ? "Edit" : "Create";
+}
+
+<h1>Create</h1>
+
+<h4>BodyPart</h4>
+<hr />
+
+<form asp-action="CreateOrEdit"  asp-route-clientId="@ViewBag.ClientId">
+    <div class="row">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Client.Id" type="hidden" class="control-label mb-2" />
+                Client ID: @ViewBag.ClientId
+            </div>
+            <div class="col-md-3">
+            <h3>General</h3>
+            <fieldset>
+            <div class="form-group form-check">
+                <label asp-for="Concussion" class="control-label"></label>
+                        <input type="checkbox" asp-for="Concussion" class="form-check-input" value="true" />
+                <span asp-validation-for="Concussion" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label asp-for="Fracture" class="control-label"></label>
+                        <input type="checkbox" asp-for="Fracture" class="form-check-input" value="true" />
+                <span asp-validation-for="Fracture" class="text-danger"></span>
+            </div>
+                    <div class="form-group form-check">
+                <label asp-for="DiscHerniation" class="control-label"></label>
+                        <input type="checkbox" asp-for="DiscHerniation" class="form-check-input" value="true" />
+                <span asp-validation-for="DiscHerniation" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                    <label asp-for="GeneralNotes" class="control-label"></label>
+                    <textarea asp-for="GeneralNotes" class="form-control" ></textarea>
+                    <span asp-validation-for="GeneralNotes" class="text-danger"></span>
+                </div>
+            </fieldset>
+            
+                <h3>Head</h3>
+            <fieldset class="">
+              <div class="form-group form-check">
+                <label asp-for="HeadR" class="control-label"></label>
+                    <input type="checkbox" asp-for="HeadR" class="form-check-input" value="true" />
+                <span asp-validation-for="HeadR" class="text-danger"></span>
+            </div>
+                <div class="form-group form-check">
+                <label asp-for="HeadL" class="control-label"></label>
+                    <input type="checkbox" asp-for="HeadL" class="form-check-input" value="true" />
+                <span asp-validation-for="HeadL" class="text-danger"></span>
+            </div>
+                <div class="form-group form-check">
+                <label asp-for="HeadF" class="control-label"></label>
+                    <input type="checkbox" asp-for="HeadF" class="form-check-input" value="true" />
+                <span asp-validation-for="HeadF" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label asp-for="HeadB" class="control-label"></label>
+                    <input type="checkbox" asp-for="HeadB" class="form-check-input" value="true" />
+                <span asp-validation-for="HeadB" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label asp-for="FaceR" class="control-label"></label>
+                <input type="checkbox" asp-for="FaceR" class="form-check-input" value="true" />
+                <span asp-validation-for="FaceR" class="text-danger"></span>
+            </div>
+                <div class="form-group form-check">
+                <label asp-for="FaceL" class="control-label"></label>
+                    <input asp-for="FaceL" class="form-check-input" value="true" />
+                <span asp-validation-for="FaceL" class="text-danger"></span>
+            </div>
+                <div class="form-group form-check">
+                <label asp-for="Jaw" class="control-label"></label>
+                    <input type="checkbox" asp-for="Jaw" class="form-check-input" value="true" />
+                <span asp-validation-for="Jaw" class="text-danger"></span>
+            </div>
+                <div class="form-group form-check">
+                <label asp-for="Teeth" class="control-label"></label>
+                    <input type="checkbox" asp-for="Teeth" class="form-check-input" value="true" />
+                <span asp-validation-for="Teeth" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="HeadNotes" class="control-label"></label>
+                    <textarea asp-for="HeadNotes" class="form-control" ></textarea>
+                    <span asp-validation-for="HeadNotes" class="text-danger"></span>
+                </div>
+            </fieldset>
+            </div>
+            <div class="col-md-3">
+            <h3>Upper Body</h3>
+            <fieldset>
+            <div class="form-group form-check">
+                <label asp-for="Neck" class="control-label"></label>
+                    <input type="checkbox" asp-for="Neck" class="form-check-input" value="true" />
+                <span asp-validation-for="Neck" class="text-danger"></span>
+            </div>
+                <div class="form-group form-check">
+                <label asp-for="UpBack" class="control-label"></label>
+                    <input type="checkbox" asp-for="UpBack" class="form-check-input" value="true" />
+                <span asp-validation-for="UpBack" class="text-danger"></span>
+            </div>
+                <div class="form-group form-check">
+                <label asp-for="UpBackR" class="control-label"></label>
+                    <input type="checkbox" asp-for="UpBackR" class="form-check-input" value="true" />
+                <span asp-validation-for="UpBackR" class="text-danger"></span>
+            </div>
+                <div class="form-group form-check">
+                <label asp-for="UpBackL" class="control-label"></label>
+                    <input type="checkbox" asp-for="UpBackL" class="form-check-input" value="true" />
+                <span asp-validation-for="UpBackL" class="text-danger"></span>
+            </div>
+                <div class="form-group form-check">
+                <label asp-for="MidBack" class="control-label"></label>
+                    <input type="checkbox" asp-for="MidBack" class="form-check-input" value="true" />
+                <span asp-validation-for="MidBack" class="text-danger"></span>
+            </div>
+                <div class="form-group form-check">
+                <label asp-for="MidBackR" class="control-label"></label>
+                    <input type="checkbox" asp-for="MidBackR" class="form-check-input" value="true" />
+                <span asp-validation-for="MidBackR" class="text-danger"></span>
+            </div>
+                <div class="form-group form-check">
+                <label asp-for="MidBackL" class="control-label"></label>
+                    <input type="checkbox" asp-for="MidBackL" class="form-check-input" value="true" />
+                <span asp-validation-for="MidBackL" class="text-danger"></span>
+            </div>
+                <div class="form-group form-check">
+                <label asp-for="LowBack" class="control-label"></label>
+                    <input type="checkbox" asp-for="LowBack" class="form-check-input" value="true" />
+                <span asp-validation-for="LowBack" class="text-danger"></span>
+            </div>
+                <div class="form-group form-check">
+                <label asp-for="LowBackR" class="control-label"></label>
+                    <input type="checkbox" asp-for="LowBackR" class="form-check-input" value="true" />
+                <span asp-validation-for="LowBackR" class="text-danger"></span>
+            </div>
+                <div class="form-group form-check">
+                <label asp-for="LowBackL" class="control-label"></label>
+                    <input type="checkbox" asp-for="LowBackL" class="form-check-input" value="true" />
+                <span asp-validation-for="LowBackL" class="text-danger"></span>
+            </div>
+                <div class="form-group form-check">
+                <label asp-for="ShoulderR" class="control-label"></label>
+                    <input type="checkbox" asp-for="ShoulderR" class="form-check-input" value="true" />
+                <span asp-validation-for="ShoulderR" class="text-danger"></span>
+            </div>
+                <div class="form-group form-check">
+                <label asp-for="ShoulderL" class="control-label"></label>
+                    <input type="checkbox" asp-for="ShoulderL" class="form-check-input" value="true" />
+                <span asp-validation-for="ShoulderL" class="text-danger"></span>
+                </div>
+                <div class="form-group form-check">
+                    <label asp-for="ChestR" class="control-label"></label>
+                    <input type="checkbox" asp-for="ChestR" class="form-check-input" value="true" />
+                    <span asp-validation-for="ChestR" class="text-danger"></span>
+                </div>
+                <div class="form-group form-check">
+                    <label asp-for="ChestL" class="control-label"></label>
+                    <input type="checkbox" asp-for="ChestL" class="form-check-input" value="true" />
+                    <span asp-validation-for="ChestL" class="text-danger"></span>
+                </div>
+                <div class="form-group form-check">
+                    <label asp-for="RibsR" class="control-label"></label>
+                    <input type="checkbox" asp-for="RibsR" class="form-check-input" value="true" />
+                    <span asp-validation-for="RibsR" class="text-danger"></span>
+                </div>
+                <div class="form-group form-check">
+                    <label asp-for="RibsL" class="control-label"></label>
+                    <input type="checkbox" asp-for="RibsL" class="form-check-input" value="true" />
+                    <span asp-validation-for="RibsL" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="NeckAndBackNotes" class="control-label"></label>
+                    <textarea asp-for="NeckAndBackNotes" class="form-control" ></textarea>
+                    <span asp-validation-for="NeckAndBackNotes" class="text-danger"></span>
+                </div>
+            </fieldset>
+            <h3>Arms and Hands</h3>
+            <fieldset>
+                <div class="form-group form-check">
+                <label asp-for="UpArmR" class="control-label"></label>
+                    <input type="checkbox" asp-for="UpArmR" class="form-check-input" value="true" />
+                <span asp-validation-for="UpArmR" class="text-danger"></span>
+            </div>
+                <div class="form-group form-check">
+                <label asp-for="UpArmL" class="control-label"></label>
+                    <input type="checkbox" asp-for="UpArmL" class="form-check-input" value="true"  />
+                <span asp-validation-for="UpArmL" class="text-danger"></span>
+            </div>
+                <div class="form-group form-check">
+                <label asp-for="ElbowR" class="control-label"></label>
+                    <input type="checkbox" asp-for="ElbowR" class="form-check-input" value="true" />
+                <span asp-validation-for="ElbowR" class="text-danger"></span>
+            </div>
+                <div class="form-group form-check">
+                <label asp-for="ElbowL" class="control-label"></label>
+                    <input type="checkbox" asp-for="ElbowL" class="form-check-input" value="true" />
+                <span asp-validation-for="ElbowL" class="text-danger"></span>
+            </div>
+                <div class="form-group form-check">
+                <label asp-for="ForearmR" class="control-label"></label>
+                    <input type="checkbox" asp-for="ForearmR" class="form-check-input" value="true" />
+                <span asp-validation-for="ForearmR" class="text-danger"></span>
+            </div>
+                <div class="form-group form-check">
+                <label asp-for="ForearmL" class="control-label"></label>
+                    <input type="checkbox" asp-for="ForearmL" class="form-check-input" value="true" />
+                <span asp-validation-for="ForearmL" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label asp-for="WristR" class="control-label"></label>
+                    <input type="checkbox" asp-for="WristR" class="form-check-input" value="true" />
+                <span asp-validation-for="WristR" class="text-danger"></span>
+            </div>
+                <div class="form-group form-check">
+                <label asp-for="WristL" class="control-label"></label>
+                    <input type="checkbox" asp-for="WristL" class="form-check-input" value="true" />
+                <span asp-validation-for="WristL" class="text-danger"></span>
+            </div>
+                <div class="form-group form-check">
+                <label asp-for="HandR" class="control-label"></label>
+                    <input type="checkbox" asp-for="HandR" class="form-check-input" value="true" />
+                <span asp-validation-for="HandR" class="text-danger"></span>
+            </div>
+                <div class="form-group form-check">
+                <label asp-for="HandL" class="control-label"></label>
+                    <input type="checkbox" asp-for="HandL" class="form-check-input" value="true" />
+                <span asp-validation-for="HandL" class="text-danger"></span>
+            </div>
+                <div class="form-group form-check">
+                <label asp-for="FingersR" class="control-label"></label>
+                    <input type="checkbox" asp-for="FingersR" class="form-check-input" value="true" />
+                <span asp-validation-for="FingersR" class="text-danger"></span>
+            </div>
+                <div class="form-group form-check">
+                <label asp-for="FingersL" class="control-label"></label>
+                    <input type="checkbox" asp-for="FingersL" class="form-check-input" value="true" />
+                <span asp-validation-for="FingersL" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ArmNotes" class="control-label"></label>
+                    <textarea asp-for="ArmNotes" class="form-control" ></textarea>
+                    <span asp-validation-for="ArmNotes" class="text-danger"></span>
+                </div>
+            </fieldset>
+            </div>
+        <div class="col-md-3">
+            <!--<h3>Torso</h3>
+        <fieldset>
+
+
+                <label asp-for="TorsoNotes" class="control-label"></label>
+                <textarea asp-for="TorsoNotes" class="form-control" ></textarea>
+                <span asp-validation-for="TorsoNotes" class="text-danger"></span>
+            </div>
+        </fieldset>-->
+        
+            <h3>Lower Body</h3>
+            <fieldset>
+        
+        <div class="form-group form-check">
+            <label asp-for="ButtocksL" class="control-label"></label>
+            <input type="checkbox" asp-for="ButtocksL" class="form-check-input" value="true" />
+            <span asp-validation-for="ButtocksL" class="text-danger"></span>
+        </div>
+        <div class="form-group form-check">
+                <label asp-for="ButtocksR" class="control-label"></label>
+                    <input type="checkbox" asp-for="ButtocksR" class="form-check-input" value="true" />
+        <span asp-validation-for="ButtocksR" class="text-danger"></span>
+                 </div>
+                <div class="form-group form-check">
+                <label asp-for="HipR" class="control-label"></label>
+                    <input type="checkbox" asp-for="HipR" class="form-check-input" value="true" />
+                <span asp-validation-for="HipR" class="text-danger"></span>
+            </div>
+                <div class="form-group form-check">
+                <label asp-for="HipL" class="control-label"></label>
+                    <input type="checkbox" asp-for="HipL" class="form-check-input" value="true" />
+                <span asp-validation-for="HipL" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                    <label asp-for="ThighR" class="control-label"></label>
+                        <input type="checkbox" class="form-check-input" asp-for="ThighR" value="true" />
+                    
+            </div>
+                <div class="form-group form-check">
+                <label asp-for="ThighL" class="control-label"></label>
+                    <input type="checkbox" asp-for="ThighL" class="form-check-input" value="true" />
+                <span asp-validation-for="ThighL" class="text-danger"></span>
+            </div>
+                <div class="form-group form-check">
+                <label asp-for="UpLegR" class="control-label"></label>
+                    <input type="checkbox" asp-for="UpLegR" class="form-check-input" value="true" />
+                <span asp-validation-for="UpLegR" class="text-danger"></span>
+            </div>
+                <div class="form-group form-check">
+                <label asp-for="UpLegL" class="control-label"></label>
+                    <input type="checkbox" asp-for="UpLegL" class="form-check-input" value="true" />
+                <span asp-validation-for="UpLegL" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label asp-for="LowLegRt" class="control-label"></label>
+                    <input type="checkbox" asp-for="LowLegRt" class="form-check-input" value="true" />
+                <span asp-validation-for="LowLegRt" class="text-danger"></span>
+            </div>
+                <div class="form-group form-check">
+                <label asp-for="LowLegR" class="control-label"></label>
+                    <input type="checkbox" asp-for="LowLegR" class="form-check-input" value="true" />
+                <span asp-validation-for="LowLegR" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label asp-for="KneeR" class="control-label"></label>
+                    <input type="checkbox" asp-for="KneeR" class="form-check-input" value="true" />
+                <span asp-validation-for="KneeR" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label asp-for="KneeL" class="control-label"></label>
+                    <input type="checkbox" asp-for="KneeL" class="form-check-input" value="true" />
+                <span asp-validation-for="KneeL" class="text-danger"></span>
+                </div>
+            </fieldset>
+            <h3>Ankles and Feet</h3>
+            <fieldset>
+                <div class="form-group form-check">
+                <label asp-for="AnkleR" class="control-label"></label>
+                    <input type="checkbox" asp-for="AnkleR" class="form-check-input" value="true" />
+                <span asp-validation-for="AnkleR" class="text-danger"></span>
+            </div>
+                <div class="form-group form-check">
+                <label asp-for="AnkleL" class="control-label"></label>
+                    <input type="checkbox" asp-for="AnkleL" class="form-check-input" value="true" />
+                <span asp-validation-for="AnkleL" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label asp-for="FootR" class="control-label"></label>
+                    <input type="checkbox" asp-for="FootR" class="form-check-input" value="true" />
+                <span asp-validation-for="FootR" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label asp-for="FootL" class="control-label"></label>
+                    <input type="checkbox" asp-for="FootL" class="form-check-input" value="true" />
+                <span asp-validation-for="FootL" class="text-danger"></span>
+            </div>
+                <div class="form-group form-check">
+                <label asp-for="ToesR" class="control-label"></label>
+                    <input type="checkbox" asp-for="ToesR" class="form-check-input" value="true" />
+                <span asp-validation-for="ToesR" class="text-danger"></span>
+            </div>
+                <div class="form-group form-check">
+                <label asp-for="ToesL" class="control-label"></label>
+                    <input type="checkbox" asp-for="ToesL" class="form-check-input" value="true" />
+                <span asp-validation-for="ToesL" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="LegNotes" class="control-label"></label>
+                    <textarea asp-for="LegNotes" class="form-control" ></textarea>
+                    <span asp-validation-for="LegNotes" class="text-danger"></span>
+                </div>
+            </fieldset>
+            </div>
+            <div class="col-md-3">
+            <h3>Tingling Sensation</h3>
+            <fieldset>
+                <div class="form-group form-check">
+                <label asp-for="TingRArm" class="control-label"></label>
+                    <input asp-for="TingRArm" class="form-check-input" value="true" />
+                <span asp-validation-for="TingRArm" class="text-danger"></span>
+            </div>
+                <div class="form-group form-check">
+                <label asp-for="TingLArm" class="control-label"></label>
+                    <input type="checkbox" asp-for="TingLArm" class="form-check-input" value="true" />
+                <span asp-validation-for="TingLArm" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label asp-for="TingRLeg" class="control-label"></label>
+                    <input type="checkbox" asp-for="TingRLeg" class="form-check-input" value="true" />
+                <span asp-validation-for="TingRLeg" class="text-danger"></span>
+            </div>
+                <div class="form-group form-check">
+                <label asp-for="TingLLeg" class="control-label"></label>
+                    <input type="checkbox" asp-for="TingLLeg" class="form-check-input" value="true" />
+                <span asp-validation-for="TingLLeg" class="text-danger"></span>
+            </div>
+            <h3>Numbness</h3>
+            <div class="form-group form-check">
+                <label asp-for="NumbRHand" class="control-label"></label>
+                    <input type="checkbox" asp-for="NumbRHand" class="form-check-input" value="true" />
+                <span asp-validation-for="NumbRHand" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label asp-for="NumbLHand" class="control-label"></label>
+                    <input type="checkbox" asp-for="NumbLHand" class="form-check-input" value="true" />
+                <span asp-validation-for="NumbLHand" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label asp-for="NumbRLeg" class="control-label"></label>
+                    <input type="checkbox" asp-for="NumbRLeg" class="form-check-input" value="true" />
+                <span asp-validation-for="NumbRLeg" class="text-danger"></span>
+            </div>
+                <div class="form-group form-check">
+                <label asp-for="NumbLLeg" class="control-label"></label>
+                <input type="checkbox" asp-for="NumbLLeg" class="form-check-input" value="true" />
+                <span asp-validation-for="NumbLLeg" class="text-danger"></span>
+            </div>
+            <h3>Painful Areas of the Body</h3>
+            <div class="form-group form-check">
+                <label asp-for="PainRArm" class="control-label"></label>
+                <input type="checkbox" asp-for="PainRArm" class="form-check-input" value="true" />
+                <span asp-validation-for="PainRArm" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label asp-for="PainLArm" class="control-label"></label>
+                    <input type="checkbox" asp-for="PainLArm" class="form-check-input" value="true" />
+                <span asp-validation-for="PainLArm" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label asp-for="PainRLeg" class="control-label"></label>
+                    <input type="checkbox" asp-for="PainRLeg" class="form-check-input" value="true" />
+                <span asp-validation-for="PainRLeg" class="text-danger"></span>
+            </div>
+                <div class="form-group form-check">
+                <label asp-for="PainLLeg" class="control-label"></label>
+                    <input type="checkbox" asp-for="PainLLeg" class="form-check-input" value="true" />
+                <span asp-validation-for="PainLLeg" class="text-danger"></span>
+            </div>
+                <div class="form-group">
+                    <label asp-for="OtherNotes" class="control-label"></label>
+                    <textarea asp-for="OtherNotes" class="form-control" ></textarea>
+                    <span asp-validation-for="OtherNotes" class="text-danger"></span>
+                </div>
+            </fieldset>
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-primary" value="Submit"/>
+                    </div>
+                </div>
+                <div class="col">
+                    <button class="btn btn-danger" onclick="Javascript:window.history.back(1); return false;">Cancel</button>
+                </div>
+            </div>
+            </div>
+    </div>
+</form>
+    
+
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

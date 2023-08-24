@@ -1,0 +1,181 @@
+@model IEnumerable<InteractHealthProDatabase.Models.AccidentVehicle>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New</a>
+    <a asp-controller="Home" class="btn btn-primary">Back</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TransportType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DriverPosition)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Make)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Model)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Year)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.License)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VehiclePersName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VehicleNoPeople)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OtherLiableParties)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Seatbelt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AirbagDeploy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Bracing)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Anticipated)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MvaCoName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MvaPolicyNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MvaClaimNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MvaAdjuster)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MvaTel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MvaFax)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MvaEmail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MvaAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MvaCity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MvaProv)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MvaPC)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InsuranceUrl)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TransportType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DriverPosition)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Make)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Model)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Year)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.License)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.VehiclePersName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.VehicleNoPeople)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OtherLiableParties)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Seatbelt)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AirbagDeploy)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Bracing)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Anticipated)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MvaCoName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MvaPolicyNo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MvaClaimNo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MvaAdjuster)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MvaTel)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MvaFax)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MvaEmail)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MvaAddress)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MvaCity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MvaProv)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MvaPC)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.InsuranceUrl)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary">Edit</a>
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary">Details</a>
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

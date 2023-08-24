@@ -1,0 +1,284 @@
+@using InteractHealthProDatabase.Models.Enums;
+@model InteractHealthProDatabase.Models.Client;
+
+
+@{
+    bool isEdit = Model.Id != 0;
+    ViewData["Title"] = isEdit ? "Edit" : "Create";
+}
+
+<h1>Client Registration</h1>
+<hr />
+<div>
+<div class="row">
+   <div class="col-md-12">
+    <form asp-action="CreateOrEdit">
+        <div class="row">
+           <div class="form-group">
+               <h4 class="col">@(isEdit ? "Edit" : "New") Client</h4>
+               @if (Model.Id > 0)
+               {
+                  <label>Client ID: @Model.Id</label>
+               }         
+               </div>
+        </div>
+
+        <div class="row">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <input asp-for="ClientMVA.Id" type="hidden" />
+            <input asp-for="Pet.Id" type="hidden" />
+            <input asp-for="Dependent.Id" type="hidden" />
+
+            @* Client itself *@
+            <div class="col-md-4">
+                <fieldset>
+                    <legend>Client Basic Info</legend>
+                    <div class="form-group">
+                        <label asp-for="ContactName" class="control-label"></label>
+                        <input asp-for="ContactName" class="form-control" />
+                        <span asp-validation-for="ContactName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Email" class="control-label"></label>
+                        <input asp-for="Email" class="form-control" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="CellPhone" class="control-label"></label>
+                        <input asp-for="CellPhone" class="form-control" />
+                        <span asp-validation-for="CellPhone" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Telephone" class="control-label"></label>
+                        <input asp-for="Telephone" class="form-control" />
+                        <span asp-validation-for="Telephone" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Fax" class="control-label"></label>
+                        <input asp-for="Fax" class="form-control" />
+                        <span asp-validation-for="Fax" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Address" class="control-label"></label>
+                        <input asp-for="Address" class="form-control" />
+                        <span asp-validation-for="Address" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="City" class="control-label"></label>
+                        <input asp-for="City" class="form-control" />
+                        <span asp-validation-for="City" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Region" class="control-label"></label>
+                        <input asp-for="Region" class="form-control" />
+                        <span asp-validation-for="Region" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Country" class="control-label"></label>
+                        <input asp-for="Country" class="form-control" />
+                        <span asp-validation-for="Country" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="PostalCode" class="control-label"></label>
+                        <input asp-for="PostalCode" class="form-control" />
+                        <span asp-validation-for="PostalCode" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ClientMVA.DateCreated" class="control-label"></label>
+                        <input asp-for="ClientMVA.DateCreated" class="form-control" placeholder="yyyy/mm/dd" />
+                        <span asp-validation-for="ClientMVA.DateCreated" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ClientMVA.Dob" class="control-label"></label>
+                        <input asp-for="ClientMVA.Dob" class="form-control" placeholder="yyyy/mm/dd" />
+                        <span asp-validation-for="ClientMVA.Dob" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ClientMVA.OHIP" class="control-label"></label>
+                        <input asp-for="ClientMVA.OHIP" class="form-control" />
+                        <span asp-validation-for="ClientMVA.OHIP" class="text-danger"></span>
+                    </div>
+                </fieldset>
+            </div>
+
+            @* ClientMVA *@
+            <div class="col-md-4">
+                <fieldset>
+                    <legend>Extended Client Info</legend>
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="ClientMVA.Gender" class="control-label"></label>
+                        <select asp-for="ClientMVA.Gender" asp-items="@Html.GetEnumSelectList<GenderEnum>()"
+                            class="form-control form-select">
+                            <option selected="selected" value=""></option>
+                        </select>
+                        <span asp-validation-for="ClientMVA.Gender" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ClientMVA.DominantHand" class="control-label"></label>
+                        <input asp-for="ClientMVA.DominantHand" class="form-control" />
+                        <span asp-validation-for="ClientMVA.DominantHand" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ClientMVA.Height" class="control-label"></label>
+                        <input asp-for="ClientMVA.Height" class="form-control" />
+                        <span asp-validation-for="ClientMVA.Height" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ClientMVA.Weight" class="control-label"></label>
+                        <input asp-for="ClientMVA.Weight" class="form-control" />
+                        <span asp-validation-for="ClientMVA.Weight" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ClientMVA.MaritalStatus" class="control-label"></label>
+                        <select asp-for="ClientMVA.MaritalStatus"
+                            asp-items="@Html.GetEnumSelectList<MaritalStatusEnum>()" class="form-control form-select">
+                            <option selected="selected" value=""></option>
+                        </select>
+                        <span asp-validation-for="ClientMVA.MaritalStatus" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ClientMVA.Accommodation" class="control-label"></label>
+                        <select asp-for="ClientMVA.Accommodation"
+                            asp-items="@Html.GetEnumSelectList<AccommodationEnum>()" class="form-control form-select">
+                            <option selected="selected" value=""></option>
+                        </select>
+                        <span asp-validation-for="ClientMVA.Accommodation" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ClientMVA.AccommodationType" class="control-label"></label>
+                        <select asp-for="ClientMVA.AccommodationType"
+                            asp-items="@Html.GetEnumSelectList<AccommodationTypeEnum>()"
+                            class="form-control form-select">
+                            <option selected="selected" value=""></option>
+                        </select>
+                        <span asp-validation-for="ClientMVA.AccommodationType" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ClientMVA.Household" class="control-label"></label>
+                        <input asp-for="ClientMVA.Household" class="form-control" />
+                        <span asp-validation-for="ClientMVA.Household" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ClientMVA.EmergencyContactName" class="control-label"></label>
+                        <input asp-for="ClientMVA.EmergencyContactName" class="form-control" />
+                        <span asp-validation-for="ClientMVA.EmergencyContactName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ClientMVA.Relationship" class="control-label"></label>
+                        <input asp-for="ClientMVA.Relationship" class="form-control" />
+                        <span asp-validation-for="ClientMVA.Relationship" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ClientMVA.CellPhone" class="control-label"></label>
+                        <input asp-for="ClientMVA.CellPhone" class="form-control" />
+                        <span asp-validation-for="ClientMVA.CellPhone" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ClientMVA.Interpreter" class="control-label"></label>
+                        <input asp-for="ClientMVA.Interpreter" class="form-control" />
+                        <span asp-validation-for="ClientMVA.Interpreter" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ClientMVA.PreferredLanguage" class="control-label"></label>
+                        <input asp-for="ClientMVA.PreferredLanguage" class="form-control" />
+                        <span asp-validation-for="ClientMVA.PreferredLanguage" class="text-danger"></span>
+                    </div>
+                </fieldset>
+            </div>
+
+            @* PET *@
+            <div class="col-md-4">
+                <fieldset>
+                    <legend>Pets</legend>
+                    <div class="form-group">
+                        <label asp-for="Pet.Cat" class="control-label"></label>
+                        <input asp-for="Pet.Cat" class="form-control" />
+                        <span asp-validation-for="Pet.Cat" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Pet.Dog" class="control-label"></label>
+                        <input asp-for="Pet.Dog" class="form-control" />
+                        <span asp-validation-for="Pet.Dog" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Pet.Details" class="control-label"></label>
+                        <textarea asp-for="Pet.Details" class="form-control"></textarea>
+                        <span asp-validation-for="Pet.Details" class="text-danger"></span>
+                    </div>
+                </fieldset>
+
+                @* Dependent *@
+                <fieldset>
+                    <legend>Dependents</legend>
+                    <div class="form-group">
+                        <label asp-for="Dependent.Person" class="control-label"></label>
+                        <input asp-for="Dependent.Person" class="form-control" />
+                        <span asp-validation-for="Dependent.Person" class="text-danger"></span>
+                    </div>
+                    <div class="form-group form-check">
+                        <label asp-for="Dependent.Wheelchair" class="control-label"></label>
+                        <input type="checkbox" class="form-check-input" value="true" asp-for="Dependent.Wheelchair" />
+                        <span asp-validation-for="Dependent.Wheelchair" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Dependent.Details" class="control-label"></label>
+                        <textarea asp-for="Dependent.Details" class="form-control"></textarea>
+                        <span asp-validation-for="Dependent.Details" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ClientMVA.Children" class="control-label"></label>
+                        <input asp-for="ClientMVA.Children" class="form-control"></input>
+                        <span asp-validation-for="ClientMVA.Children" class="text-danger"></span>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend>Notes</legend>
+                    <div class="form-group">
+                        <label asp-for="ClientMVA.Notes" class="control-label"></label>
+                        <textarea asp-for="ClientMVA.Notes" class="form-control"></textarea>
+                        <span asp-validation-for="ClientMVA.Notes" class="text-danger"></span>
+                    </div>
+                    <br />
+                    <div class="form-group form-check">
+                        <label asp-for="ClientMVA.Consent" class="control-label">
+                            Consent</label>
+                        <input type="checkbox" class="form-check-input" asp-for="ClientMVA.Consent" value="true" />
+                        <span asp-validation-for="ClientMVA.Consent" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Referral" class="control-label"></label>
+                        <select asp-for="Referral" asp-items="@Html.GetEnumSelectList<ReferralEnum>()"
+                            class="form-control form-select">
+                            <option selected="selected" value=""></option>
+                        </select>
+                        <span asp-validation-for="Referral" class="text-danger"></span>
+                    </div>
+                </fieldset>
+            </div>
+        </div>   @*end row *@
+
+        <div class="row mt-4 mb-4 justify-content-center">
+            <div class="col-md-1">
+                <div class="form-group">
+                    <input type="submit" value="Submit" class="btn btn-primary" />
+                </div>
+            </div>
+            <div class="col-md-1">
+                <div class="form-group">
+                    <button class="btn btn-danger" onclick="Javascript:window.history.back(1); return false;">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </form>
+  </div>   @*end col *@
+</div>   @*end row *@
+
+
+
+
+@section Scripts {
+@{
+await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+}
