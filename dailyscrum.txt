@@ -1,0 +1,160 @@
+Thursday Mar 30, 2023 
+*********************************
+
+Xiaoming
+
+To do:
+-Work on Lawyer and Case Views
+-Update according to the list of google documents
+
+Done:
+-Update and revise Lawyer Page's navigation
+
+Block:
+-Tables to be moved over to the Client Profile Page
+=================================
+
+Wednesday Mar 29, 2023 
+*********************************
+
+Xiaoming
+
+To do:
+-Work on Lawyer and Case Views
+-Update according to the list of google documents
+
+Done:
+-Read the documents from Lucie and 
+uderstand the requirements.
+-Update and revise insurance Page's navigation
+
+Block:
+-Tables to be moved over to the Client Profile Page
+=================================
+
+Tuesday Mar 28, 2023 
+*********************************
+
+Xiaoming
+
+To do:
+-Work on Lawyer and Case Views
+
+Done:
+-Meeting with Lucie for tasks review
+
+Block:
+-Need update related problems
+=================================
+
+Monday Mar 27, 2023 
+*********************************
+
+Xiaoming
+
+To do:
+-Work on Lawyer and Case Views
+-Review all tasks belongs to me
+-Will be review and write down all blocks
+
+Done:
+-Write comments of tasks update
+-Meet with Edgar for current problems
+
+Block:
+-Need rewrite model class, be afraid of other parts
+=================================
+
+Friday Mar 24, 2023 
+*********************************
+
+Xiaoming
+
+To do:
+-Work on Lawyer and Case Views
+-intergration of health and insurance part
+
+Done:
+-Moved Health part from home page and keep insurance
+
+Block:
+-Need rewrite model class, be afraid of other parts
+=================================
+
+Thursday Mar 23, 2023 
+*********************************
+Le
+
+To do:
+
+
+Done:
+
+
+Block:
+=================================
+Xiaoming
+
+To do:
+-Work on Lawyer and Case Views
+
+Done:
+-Move Tables from all classes to any fields that are not NIL to be on the client page
+ -Go to client Profile page in Browser
+ -Client Details - registration fields 
+
+Block:
+-Need read view layout
+
+Wednesday Mar 22, 2023 
+*********************************
+Le
+
+To do:
+
+
+Done:
+
+
+Block:
+=================================
+Xiaoming
+
+To do:
+-Work on Lawyer and Case Views
+
+Done:
+-Read goole doc for new tasks assignment
+
+Block:
+-Need tech support
+
+Tuesday Mar 21, 2023 
+*********************************
+Le
+
+To do:
+-Work on ASP.NET Accident Details and Vehicles views
+
+Done:
+
+
+Block:
+=================================
+Xiaoming
+
+To do:
+-Work on Lawyer and Case Views
+
+Done:
+-Update Lawyer and Case description
+
+Block:
+-Need to discuss the tasks reassignment,
+ because new person joined team and some person quit.
+
+-Need some trainings on the project and ASP.NET knowledges,
+ it's better we have professional instructor.
+
+
+
