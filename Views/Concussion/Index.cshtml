@@ -1,0 +1,251 @@
+@model IEnumerable<InteractHealthProDatabase.Models.Concussion>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.HeadAches)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Vision)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Amnesia)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Smell)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tinitus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Seizures)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Dizziness)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Balance)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tremors)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nausea)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Blackouts)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tasks)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Motivation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FinishTasks)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Assert)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Forgetful)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AttentionSpan)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AnticipateOthers)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProblemSolving)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MentalStamina)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Reading)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Performance)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LanguageDifficulty)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Verbal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImpairedJudgement)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Reactions)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NotesTimer)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AbnormalAnxiety)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Rude)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Personality)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Mood)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Depression)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Indifference)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fatigue)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Shallow)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MentalFlex)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Note)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.HeadAches)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Vision)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Amnesia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Smell)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tinitus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Seizures)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dizziness)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Balance)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tremors)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nausea)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Blackouts)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tasks)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Motivation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FinishTasks)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Assert)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Forgetful)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AttentionSpan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AnticipateOthers)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProblemSolving)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MentalStamina)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Reading)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Performance)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LanguageDifficulty)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Verbal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ImpairedJudgement)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Reactions)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NotesTimer)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AbnormalAnxiety)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rude)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Personality)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mood)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Depression)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Indifference)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fatigue)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Shallow)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MentalFlex)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Note)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

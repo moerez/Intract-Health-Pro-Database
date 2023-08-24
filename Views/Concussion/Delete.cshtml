@@ -1,0 +1,243 @@
+@model InteractHealthProDatabase.Models.Concussion
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Concussion</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.HeadAches)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.HeadAches)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Vision)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Vision)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Amnesia)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Amnesia)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Smell)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Smell)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Tinitus)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Tinitus)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Seizures)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Seizures)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Dizziness)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Dizziness)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Balance)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Balance)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Tremors)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Tremors)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Nausea)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Nausea)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Blackouts)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Blackouts)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Tasks)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Tasks)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Motivation)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Motivation)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.FinishTasks)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FinishTasks)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Assert)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Assert)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Forgetful)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Forgetful)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.AttentionSpan)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.AttentionSpan)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.AnticipateOthers)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.AnticipateOthers)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ProblemSolving)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ProblemSolving)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.MentalStamina)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.MentalStamina)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Reading)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Reading)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Performance)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Performance)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.LanguageDifficulty)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.LanguageDifficulty)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Verbal)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Verbal)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ImpairedJudgement)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ImpairedJudgement)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Reactions)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Reactions)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.NotesTimer)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NotesTimer)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.AbnormalAnxiety)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.AbnormalAnxiety)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Rude)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Rude)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Personality)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Personality)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Mood)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Mood)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Depression)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Depression)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Indifference)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Indifference)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Fatigue)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Fatigue)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Shallow)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Shallow)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.MentalFlex)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.MentalFlex)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Note)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Note)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

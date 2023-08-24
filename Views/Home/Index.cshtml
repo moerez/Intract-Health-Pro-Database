@@ -1,0 +1,73 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">IHP Services</h1>
+
+</div>
+
+<div class="row">
+     <div class="col-auto">
+        <a class="bd-links-link d-inline-block rounded" asp-area="" asp-controller="Client" asp-action="Index">Client</a> <br />
+        <a class="bd-links-link d-inline-block rounded" asp-area="" asp-controller="ClientMVA" asp-action="Index">ClientMVA</a> <br />
+        <a class="bd-links-link d-inline-block rounded" asp-area="" asp-controller="Appointment" asp-action="Index">Appointment</a> <br />
+        <a class="bd-links-link d-inline-block rounded" asp-area="" asp-controller="AccidentDetail" asp-action="Index">AccidentDetail</a> <br />
+        <a class="bd-links-link d-inline-block rounded" asp-area="" asp-controller="AccidentVehicle" asp-action="Index">AccidentVehicle</a> <br />
+        <a class="bd-links-link d-inline-block rounded" asp-area="" asp-controller="Dependent" asp-action="Index">Dependent</a> <br />
+        <a class="bd-links-link d-inline-block rounded" asp-area="" asp-controller="Pet" asp-action="Index">Pet</a> <br />
+        <a class="bd-links-link d-inline-block rounded" asp-area="" asp-controller="InsuranceClaim" asp-action="Index">InsuranceClaim</a> <br />
+        <a class="bd-links-link d-inline-block rounded" asp-area="" asp-controller="InsuranceCompany" asp-action="Index">InsuranceCompany</a> <br />
+        <a class="bd-links-link d-inline-block rounded" asp-area="" asp-controller="InsuranceCompanyContact" asp-action="Index">InsuranceCompanyContact</a><br />
+        <a class="bd-links-link d-inline-block rounded" asp-area="" asp-controller="Lawyer" asp-action="Index">Lawyer</a> <br />
+        <a class="bd-links-link d-inline-block rounded" asp-area="" asp-controller="Case" asp-action="Index">Case</a> <br />
+        <a class="bd-links-link d-inline-block rounded" asp-area="" asp-controller="HealthCompany" asp-action="Index">HealthCompany</a> <br />
+        <a class="bd-links-link d-inline-block rounded" asp-area="" asp-controller="HealthCompanyContact" asp-action="Index">HealthCompanyContact</a> <br /> 
+        <a class="bd-links-link d-inline-block rounded" asp-area="" asp-controller="HealthFile" asp-action="Index">HealthFile</a> <br />
+        <a class="bd-links-link d-inline-block rounded" asp-area="" asp-controller="MedicalHistory" asp-action="Index">MedicalHistory</a> <br />
+        <a class="bd-links-link d-inline-block rounded" asp-area="" asp-controller="MedicalHistoryAccident" asp-action="Index">MedicalHistoryAccident</a> <br />
+        <a class="bd-links-link d-inline-block rounded" asp-area="" asp-controller="Medication" asp-action="Index">Medication</a> <br />
+        <a class="bd-links-link d-inline-block rounded" asp-area="" asp-controller="BodyPart" asp-action="Index">BodyPart</a> <br />
+        <a class="bd-links-link d-inline-block rounded" asp-area="" asp-controller="Concussion" asp-action="Index">Concussion</a> <br />
+        <a class="bd-links-link d-inline-block rounded" asp-area="" asp-controller="WorkHistory" asp-action="Index">WorkHistory</a><br />
+        <a class="bd-links-link d-inline-block rounded" asp-area="" asp-controller="Psychotherapy" asp-action="Index">Psychotherapy</a><br /> 
+    </div>
+
+    <div class="col">
+        <div id="cal-loading" class="d-flex justify-content-center align-content-center row">
+            <span class="col-auto">Loading Calendar...</span>
+            <div class="col-auto spinner-border" role="status">
+                <span class="sr-only"></span>
+            </div>
+        </div>
+
+        <div id='calendar'></div>
+    </div>
+</div>
+
+@section Scripts {
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#calendar').fullCalendar({
+            header: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'month,agendaWeek,agendaDay'
+            },
+            firstDay: 1, //The day that each week begins (Monday=1)
+            slotMinutes: 60,
+            events: '@Url.RouteUrl(new{ action="GetEvents", controller="Home"})',
+            eventClick: function (info) {
+                const id = info.publicId;
+                window.location.href = "Client/Details/" + id;
+            },
+            loading: function (isLoading) {
+                if (!isLoading) {
+                    $('#cal-loading').removeClass('d-flex').addClass('d-none');
+                }
+            }
+        });
+    });
+</script>
+}

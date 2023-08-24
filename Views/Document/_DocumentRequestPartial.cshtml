@@ -1,0 +1,87 @@
+@model InteractHealthProDatabase.Models.Documents.DocumentRequest
+@using InteractHealthProDatabase.Models.Enums
+
+<form asp-action="CreateOrEditRequest" asp-route-clientId="@ViewBag.ClientId">
+    <input asp-for="Id" type="hidden" />
+    <div class="form-group">
+        <label asp-for="DocumentStr" class="control-label"></label>
+        <select asp-for="DocumentStr" class="form-select">
+            <optgroup label="Requesting from Rehab">
+                <option value="Initial Intro Letter ">Initial Intro Letter </option>
+                <option value="Thank You Referral Letter">Thank You Referral Letter</option>
+                <option value="Advisory Report MVA Letter">Advisory Report MVA Letter</option>
+                <option value="OCF-18 Treatment Plan - Treatment">OCF-18 Treatment Plan - Treatment</option>
+                <option value="OCF-18 Treatment Plan - Assessment ">OCF-18 Treatment Plan - Assessment </option>
+                <option value="OCF-23 Treatment Plan - Treatment">OCF-23 Treatment Plan - Treatment</option>
+                <option value="OCF-24 MIG">OCF-24 MIG</option>
+                <option value="Other Treatment Plan">Other Treatment Plan</option>
+                <option value="OCF-3 Completion Request to Rehab">OCF-3 Completion Request to Rehab</option>
+                <option value="OCF-3 Completion Request to Family Doctor">OCF-3 Completion Request to Family Doctor
+                </option>
+                <option value="OCF-3 Completion Request to Other">OCF-3 Completion Request to Other</option>
+                <option value="General Advisory Report Letter">General Advisory Report Letter</option>
+                <option value="Internal Report for Rehab">Internal Report for Rehab</option>
+                <option value="Internal Report for Doctor">Internal Report for Doctor</option>
+                <option value="Assessment Report from Rehab">Assessment Report from Rehab</option>
+            </optgroup>
+            <optgroup label="Requesting from Doctor">
+                <option value="OCF-3 Completion Request to Doctor">OCF-3 Completion Request to Doctor</option>
+                <option value="Concussion">Concussion</option>
+                <option value="MVA Referral Note">MVA Referral Note</option>
+                <option value="Slip & Fall Referral Note">Slip & Fall Referral Note</option>
+                <option value="Sports Injury Referral Note">Sports Injury Referral Note</option>
+                <option value="Scoliosis Referral Note">Scoliosis Referral Note</option>
+                <option value="Pain Injection Referral Note">Pain Injection Referral Note</option>
+                <option value="Frozen Shoulder Referral Note">Frozen Shoulder Referral Note</option>
+                <option value="Acute Pain Referral Note">Acute Pain Referral Note</option>
+                <option value="Imaging Request">Imaging Request</option>
+                <option value="Assessment Request">Assessment Request</option>
+                <option value="Physio Referral Note">Physio Referral Note</option>
+                <option value="Psych Referral Note">Psych Referral Note</option>
+                <option value="Specialist Referral Note">Specialist Referral Note</option>
+                <option value="Work Related Note">Work Related Note</option>
+                <option value="Disability Related Note">Disability Related Note</option>
+            </optgroup>
+            <optgroup label="Requesting from Other">
+                <option value="Other">Other</option>
+            </optgroup>
+        </select>
+        <span asp-validation-for="DocumentStr" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="DateSubmitted" class="control-label"></label>
+        <input asp-for="DateSubmitted" class="form-control" />
+        <span asp-validation-for="DateSubmitted" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="To" class="control-label"></label>
+        <input asp-for="To" class="form-control" />
+        <span asp-validation-for="To" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="DeliveryMethod" class="control-label"></label>
+        <select asp-for="DeliveryMethod" asp-items="@Html.GetEnumSelectList<DeliveryMethodEnum>()"
+            class="form-control form-select"></select>
+        <span asp-validation-for="DeliveryMethod" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="DeliveryMethodNote" class="control-label"></label>
+        <input asp-for="DeliveryMethodNote" class="form-control" />
+        <span asp-validation-for="DeliveryMethodNote" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="NameOfAssociate" class="control-label"></label>
+        <input asp-for="NameOfAssociate" class="form-control" />
+        <span asp-validation-for="NameOfAssociate" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Note" class="control-label"></label>
+        <input asp-for="Note" class="form-control" />
+        <span asp-validation-for="Note" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <input type="submit" class="btn btn-primary" />
+    </div>
+</form>
+
+<partial name="_ValidationScriptsPartial" />

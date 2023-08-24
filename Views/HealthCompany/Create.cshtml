@@ -1,0 +1,32 @@
+@model InteractHealthProDatabase.Models.HealthCompany
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+<form asp-action="Create">
+    <div class="form-group row align-items-center px-2">
+        <h1 class="col">New Health Company</h1>
+        <input type="submit" value="Create" class="btn btn-primary col-auto mx-2" />
+        <a asp-action="Index" class="btn btn-danger col-auto">Cancel</a>
+    </div>
+    <hr />
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <fieldset>
+                <div class="form-group">
+                    <label asp-for="Title" class="control-label"></label>
+                    <input asp-for="Title" class="form-control" />
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+            </fieldset>
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

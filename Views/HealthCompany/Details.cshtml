@@ -1,0 +1,116 @@
+@model InteractHealthProDatabase.Models.HealthCompany
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="form-group row align-items-center px-1">
+    <h1 class="col-auto">@Html.DisplayFor(model => model.Title)</h1>
+    <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-primary btn-sm col-auto mx-2">Edit</a>
+    <a asp-action="Delete" asp-route-id="@Model?.Id" class="btn btn-danger btn-sm col-auto mx-2">Delete</a>
+    <span class="col"></span>
+    <a asp-action="Index" asp-route-id="" class="btn btn-secondary col-auto ml-auto">Back</a>
+    <hr />
+</div>
+
+<div class="row gap-5">
+    @* Health Files List *@
+    <div class="row col-lg-6">
+        <legend class="p-0">Health Files</legend>
+        <table class="table table-hover border">
+            <thead>
+                <tr>
+                    <th>RefNo</th>
+                    <th>OtherRefNo</th>
+                    <th>Type of Appointment</th>
+                    <th>Time</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model == null || Model.HealthFiles?.Count == 0)
+                {
+                    <tr>
+                        <td colspan="3" class="text-center text-warning">
+                            No Health Files added yet.
+                        </td>
+                    </tr>
+                }
+                else
+                {
+                    @for (int i = 0; i < Model.HealthFiles?.Count; i++)
+                    {
+                        <tr>
+                            <td>
+                                <a asp-action="Details" asp-controller="HealthFile"
+                            asp-route-id="@Model.HealthFiles.ElementAt(i).Id">
+                                    @Model.HealthFiles.ElementAt(i).RefNo
+                                </a>
+                            </td>
+                            <td>
+                                @Model.HealthFiles.ElementAt(i).OtherRefNo
+                            </td>
+                            <td>
+                                @Model.HealthFiles.ElementAt(i).TypeOfAppointment
+                            </td>
+                            <td>
+                                @Model.HealthFiles.ElementAt(i).DateTime
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+
+    @* Health Contacts List *@
+    <div class="row col-lg-6">
+        <div class="d-flex p-0">
+            <legend class="flex-grow-1">Contacts</legend>
+            <a asp-action="Create" asp-controller="HealthCompanyContact" asp-route-healthCompanyId="@Model?.Id"
+                class="btn btn-sm btn-primary col-auto mb-2">Add Contact</a>
+        </div>
+        <table class="table table-hover border">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>CellPhone</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model == null || Model.HealthCompanyContacts?.Count == 0)
+                {
+                    <tr>
+                        <td colspan="3" class="text-center text-warning">
+                            No contacts added yet.
+                        </td>
+                    </tr>
+                }
+                else
+                {
+                    @for (int i = 0; i < Model.HealthCompanyContacts?.Count; i++)
+                    {
+                        <tr>
+                            <td>
+                                <a asp-action="Details" asp-controller="HealthCompanyContact"
+                            asp-route-id="@Model.HealthCompanyContacts.ElementAt(i).Id">
+                                    @Model.HealthCompanyContacts.ElementAt(i).ContactName
+                                </a>
+                            </td>
+                            <td>
+                                <a href="mailto:@Model.HealthCompanyContacts.ElementAt(i).Email">
+                                    @Model.HealthCompanyContacts.ElementAt(i).Email
+                                </a>
+                            </td>
+                            <td>
+                                <a href="tel:@Model.HealthCompanyContacts.ElementAt(i).CellPhone">
+                                    @Model.HealthCompanyContacts.ElementAt(i).CellPhone
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

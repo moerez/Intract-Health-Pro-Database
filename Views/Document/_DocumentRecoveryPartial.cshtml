@@ -1,0 +1,74 @@
+@model InteractHealthProDatabase.Models.Documents.DocumentRecovery
+@using InteractHealthProDatabase.Models.Enums
+
+<form asp-action="CreateOrEditRecovery" asp-route-clientId="@ViewBag.ClientId">
+    <input asp-for="Id" type="hidden" />
+    <div class="form-group">
+        <label asp-for="DocumentStr" class="control-label"></label>
+        <select asp-for="DocumentStr" class="form-select">
+            <option value="New Patient Referral Note from Doctor">New Patient Referral Note from Doctor</option>
+            <option value="New Patient Referral Note from Rehab">New Patient Referral Note from Rehab</option>
+            <option value="Completed OCF-3">Completed OCF-3</option>
+            <option value="Medical Report from Doctor">Medical Report from Doctor</option>
+            <option value="Medical Report from Rehab">Medical Report from Rehab</option>
+            <option value="Specialist Referral from Doctor">Specialist Referral from Doctor</option>
+            <option value="Pain Management Referral">Pain Management Referral</option>
+            <option value="OHIP Referral">OHIP Referral</option>
+            <option value="Diagnostic Imaging Request">Diagnostic Imaging Request</option>
+            <option value="Diagnostic Imaging Report">Diagnostic Imaging Report</option>
+            <option value="Personal Injury Consultation Request">Personal Injury Consultation Request</option>
+            <option value="Physical Assessment Request">Physical Assessment Request</option>
+            <option value="Occupational Therapist Request">Occupational Therapist Request</option>
+            <option value="Vocational Assessment Request">Vocational Assessment Request</option>
+        </select>
+        <span asp-validation-for="DocumentStr" class="text-danger"></span>
+    </div>
+    <div class="form-group form-check">
+        <label class="form-check-label">
+            <input class="form-check-input" asp-for="GeneralTreatmentPlan" /> @Html.DisplayNameFor(model =>
+            model.GeneralTreatmentPlan)
+        </label>
+    </div>
+    <div class="form-group form-check">
+        <label class="form-check-label">
+            <input class="form-check-input" asp-for="Ocf18TpReceived" /> @Html.DisplayNameFor(model =>
+            model.Ocf18TpReceived)
+        </label>
+    </div>
+    <div class="form-group form-check">
+        <label class="form-check-label">
+            <input class="form-check-input" asp-for="Ocf23MigReceived" /> @Html.DisplayNameFor(model =>
+            model.Ocf23MigReceived)
+        </label>
+    </div>
+    <div class="form-group">
+        <label asp-for="DateReceivedByIhp" class="control-label"></label>
+        <input asp-for="DateReceivedByIhp" class="form-control" />
+        <span asp-validation-for="DateReceivedByIhp" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="ReceivedFrom" class="control-label"></label>
+        <input asp-for="ReceivedFrom" class="form-control" />
+        <span asp-validation-for="ReceivedFrom" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="DeliveryMethod" class="control-label"></label>
+        <select asp-for="DeliveryMethod" asp-items="@Html.GetEnumSelectList<DeliveryMethodEnum>()" class="form-control"></select>
+        <span asp-validation-for="DeliveryMethod" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="ReceivedBy" class="control-label"></label>
+        <input asp-for="ReceivedBy" class="form-control" />
+        <span asp-validation-for="ReceivedBy" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Note" class="control-label"></label>
+        <input asp-for="Note" class="form-control" />
+        <span asp-validation-for="Note" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <input type="submit" class="btn btn-primary" />
+    </div>
+</form>
+
+<partial name="_ValidationScriptsPartial" />

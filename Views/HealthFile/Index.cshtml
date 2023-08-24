@@ -1,0 +1,55 @@
+@model IEnumerable<InteractHealthProDatabase.Models.HealthFile>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="form-group row align-items-center px-2">
+    <h1 class="col">All Health Files</h1>
+    <span class="col-auto text-secondary">To create a new Health File, navigate to a client's profile page</span>
+    <hr />
+</div>
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.RefNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OtherRefNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TypeOfAppointment)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateTime)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RefNo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OtherRefNo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TypeOfAppointment)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateTime)
+                </td>
+                <td>
+                    <a asp-action="CreateOrEdit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

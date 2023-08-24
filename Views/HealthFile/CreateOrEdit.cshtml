@@ -1,0 +1,67 @@
+@model InteractHealthProDatabase.Models.HealthFile
+@using InteractHealthProDatabase.Models.Enums
+
+@{
+    bool isEdit = Model.Id != 0;
+    ViewData["Title"] = isEdit ? "Edit" : "Create";
+
+    List<HealthCompany>? hcList = ViewBag.HealthCompanies as List<HealthCompany>;
+    List<SelectListItem> hcSelectList = new List<SelectListItem>();
+    if (hcList == null) hcList = new List<HealthCompany>();
+    foreach (HealthCompany hc in hcList)
+    {
+        hcSelectList.Add(new SelectListItem()
+        {
+            Value = hc.Id.ToString(),
+            Text = hc.Title
+        });
+    }
+}
+
+
+<form asp-action="CreateOrEdit" asp-route-clientId="@ViewBag.ClientId">
+    <div class="form-group row align-items-center px-2 py-0">
+        <h1 class="col">@(isEdit ? "Edit" : "New") Health File</h1>
+        <input type="submit" value='@(isEdit ? "Edit" : "Create")' class="btn btn-primary col-auto mx-2" />
+        <a asp-action="Details" asp-controller="Client" asp-route-id="@ViewBag.ClientId"
+            class="btn btn-danger col-auto">Cancel</a>
+    </div>
+    <hr />
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+
+    <div class="form-group">
+        <label asp-for="SelectedHealthCompanyId" class="control-label"></label>
+        @Html.DropDownList("SelectedHealthCompanyId", hcSelectList, "Please Select the health Company", new
+        {@class = "form-control form-select"})
+        <span asp-validation-for="SelectedHealthCompanyId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="RefNo" class="control-label"></label>
+        <input asp-for="RefNo" class="form-control" />
+        <span asp-validation-for="RefNo" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="OtherRefNo" class="control-label"></label>
+        <input asp-for="OtherRefNo" class="form-control" />
+        <span asp-validation-for="OtherRefNo" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="TypeOfAppointment" class="control-label"></label>
+        <select asp-for="TypeOfAppointment" asp-items="Html.GetEnumSelectList<VisitTypeEnum>()"
+            class="form-control form-select">
+            <option value="">-</option>
+        </select>
+        <span asp-validation-for="TypeOfAppointment" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="DateTime" class="control-label"></label>
+        <input asp-for="DateTime" class="form-control" />
+        <span asp-validation-for="DateTime" class="text-danger"></span>
+    </div>
+</form>
+
+@section Scripts {
+@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

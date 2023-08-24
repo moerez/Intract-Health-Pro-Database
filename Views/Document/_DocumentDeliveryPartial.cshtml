@@ -1,0 +1,82 @@
+@model InteractHealthProDatabase.Models.Documents.DocumentDelivery
+@using InteractHealthProDatabase.Models.Enums
+
+<form asp-action="CreateOrEditDelivery" asp-route-clientId="@ViewBag.ClientId">
+    <input asp-for="Id" type="hidden" />
+    <div class="form-group">
+        <label asp-for="DocumentStr" class="control-label"></label>
+        @* <input asp-for="DocumentStr" class="form-control" /> *@
+        <select asp-for="DocumentStr" class="form-select">
+            <option value="Initial Intro Letter">Initial Intro Letter</option>
+            <option value="Thank You Referral Letter">Thank You Referral Letter</option>
+            <option value="Advisory Report MVA Letter - ALONE">Advisory Report MVA Letter - ALONE</option>
+            <option value="Advisory Report MVA Letter - WITH TP">Advisory Report MVA Letter - WITH TP</option>
+            <option value="OCF-3 Completion Request Letter - ALONE">OCF-3 Completion Request Letter - ALONE</option>
+            <option value="OCF-3 Completion Request Letter - WITH OCF-3">
+                OCF-3 Completion Request Letter - WITH OCF-3
+            </option>
+    <option value="General Advisory Report Letter">General Advisory Report Letter</option>
+    <option value="Assessment Report Rehab">Assessment Report Rehab</option>
+    <option value="IHP Medical Consult Report">IHP Medical Consult Report</option>
+    <option value="Insurance Assessment Report">Insurance Assessment Report</option>
+    <option value="Other Assessment Report">Other Assessment Report</option>
+    <option value="Specialist Report">Specialist Report</option>
+    <option value="Other Doctors' Note">Other Doctors' Note</option>
+        </select>
+        <span asp-validation-for="DocumentStr" class="text-danger"></span>
+    </div>
+    <div class="form-group form-check">
+        <label class="form-check-label">
+            <input class="form-check-input" asp-for="GeneralTreatmentPlan" />
+            @Html.DisplayNameFor(model => model.GeneralTreatmentPlan)
+        </label>
+    </div>
+    <div class="form-group form-check">
+        <label class="form-check-label">
+            <input class="form-check-input" asp-for="Ocf18TpReceived" />
+            @Html.DisplayNameFor(model => model.Ocf18TpReceived)
+        </label>
+    </div>
+    <div class="form-group form-check">
+        <label class="form-check-label">
+            <input class="form-check-input" asp-for="Ocf23MigReceived" />
+            @Html.DisplayNameFor(model => model.Ocf23MigReceived)
+        </label>
+    </div>
+    <div class="form-group">
+        <label asp-for="DateDeliveredByIhp" class="control-label"></label>
+        <input asp-for="DateDeliveredByIhp" class="form-control" />
+        <span asp-validation-for="DateDeliveredByIhp" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="To" class="control-label"></label>
+        <input asp-for="To" class="form-control" />
+        <span asp-validation-for="To" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="DeliveryMethod" class="control-label"></label>
+        <select asp-for="DeliveryMethod" asp-items="@Html.GetEnumSelectList<DeliveryMethodEnum>()"
+            class="form-control form-select"></select>
+        <span asp-validation-for="DeliveryMethod" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="DeliveryMethodNote" class="control-label"></label>
+        <input asp-for="DeliveryMethodNote" class="form-control" />
+        <span asp-validation-for="DeliveryMethodNote" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="NameOfAssociate" class="control-label"></label>
+        <input asp-for="NameOfAssociate" class="form-control" />
+        <span asp-validation-for="NameOfAssociate" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Note" class="control-label"></label>
+        <input asp-for="Note" class="form-control" />
+        <span asp-validation-for="Note" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <input type="submit" class="btn btn-primary" />
+    </div>
+</form>
+
+<partial name="_ValidationScriptsPartial" />

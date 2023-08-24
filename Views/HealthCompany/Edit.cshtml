@@ -1,0 +1,32 @@
+@model InteractHealthProDatabase.Models.HealthCompany
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+
+<form asp-action="Edit" class="row">
+    <div class="form-group row align-items-center px-2">
+        <h1 class="col">Edit @Model.Title</h1>
+        <input type="submit" value="Save" class="btn btn-primary col-auto mx-2" />
+        <a asp-action="Index" asp-route-id="@Model.Id" class="btn btn-danger col-auto">Cancel</a>
+    </div>
+    <hr />
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <input type="hidden" asp-for="Id" />
+    <div class="col-md-6 pe-3">
+        <fieldset>
+            <legend>Company details</legend>
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+        </fieldset>
+    </div>
+</form>
+
+@section Scripts {
+@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+<script src="~/js/HealthCompany/edit.js"></script>
+}

@@ -1,0 +1,36 @@
+@using InteractHealthProDatabase.Models.Enums
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="form-group">
+            <label class="control-label">Document Type</label>
+            <select id="DocumentType" asp-items="@Html.GetEnumSelectList<DocumentTypeEnum>()" class="form-select">
+                <option value="" disabled selected>Select Document Type</option>
+            </select>
+        </div>
+        <div id="childPlaceHolder" style="display:none;"> </div>
+    </div>
+</div>
+
+<div>
+    <a asp-controller="Client" asp-action="Details" asp-route-id="@ViewBag.ClientId">Back to Client Details</a>
+</div>
+
+@section Scripts {
+<script>
+    @* $('#document-form').on('submit', function (event) {
+            alert('here');
+            }); *@
+        $('#DocumentType').on('change', function () {
+            const selectedId = $(this).val();
+            $.get('/Document/GetPlaceHolder/' + selectedId + '?ClientId=' + @ViewBag.ClientId, function (data) {
+                $('#childPlaceHolder').html(data);
+                $('#childPlaceHolder').fadeIn('fast');
+            });
+        })
+</script>
+}

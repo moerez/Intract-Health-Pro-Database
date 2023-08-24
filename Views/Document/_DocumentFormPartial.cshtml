@@ -1,0 +1,63 @@
+@model InteractHealthProDatabase.Models.Documents.DocumentForm
+
+<form asp-action="CreateOrEditForm" asp-route-clientId="@ViewBag.ClientId">
+    <input asp-for="Id" type="hidden" />
+    <div class="form-group">
+        <label asp-for="DocumentStr" class="control-label"></label>
+        <select asp-for="DocumentStr" class="form-select">
+            <option value="">Select a form</option>
+            <option value="OCF-1 AB Application">OCF-1 AB Application</option>
+            <option value="OCF-2 Employers Confirm.">OCF-2 Employers Confirm.</option>
+            <option value="OCF-3 Disability Certificate">OCF-3 Disability Certificate</option>
+            <option value="OCF-4 Death Certificate">OCF-4 Death Certificate</option>
+            <option value="OCF-5 Permission Health ">OCF-5 Permission Health </option>
+            <option value="OCF-6 Expense Claim">OCF-6 Expense Claim</option>
+            <option value="OCF-10 Election of Income">OCF-10 Election of Income</option>
+            <option value="OCF-18 Treatment Plan">OCF-18 Treatment Plan</option>
+            <option value="OCF-18 Assessment Plan">OCF-18 Assessment Plan</option>
+            <option value="OCF-18 Assistive Devices">OCF-18 Assistive Devices</option>
+            <option value="OCF-19 Catastrophic Det.">OCF-19 Catastrophic Det.</option>
+            <option value="OCF-21 Ins. Invoice">OCF-21 Ins. Invoice</option>
+            <option value="OCF-24 MIG">OCF-24 MIG</option>
+            <option value="Form 1 - Attendant Care Needs">Form 1 - Attendant Care Needs</option>
+            <option value="Settlement Disclosure Notice">Settlement Disclosure Notice</option>
+            <option value="Other Treatment Plan">Other Treatment Plan</option>
+        </select>
+        <span asp-validation-for="DocumentStr" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="RequestDate" class="control-label"></label>
+        <input asp-for="RequestDate" class="form-control" />
+        <span asp-validation-for="RequestDate" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="CompletionDate" class="control-label"></label>
+        <input asp-for="CompletionDate" class="form-control" />
+        <span asp-validation-for="CompletionDate" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="To" class="control-label"></label>
+        <input asp-for="To" class="form-control" />
+        <span asp-validation-for="To" class="text-danger"></span>
+    </div>
+    <div class="form-group form-check">
+        <label class="form-check-label">
+            <input class="form-check-input" asp-for="Submitted" /> @Html.DisplayNameFor(model => model.Submitted)
+        </label>
+    </div>
+    <div class="form-group">
+        <label asp-for="DateSubmitted" class="control-label"></label>
+        <input asp-for="DateSubmitted" class="form-control" />
+        <span asp-validation-for="DateSubmitted" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Note" class="control-label"></label>
+        <input asp-for="Note" class="form-control" />
+        <span asp-validation-for="Note" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <input type="submit" class="btn btn-primary" />
+    </div>
+</form>
+
+<partial name="_ValidationScriptsPartial" />
