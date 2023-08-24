@@ -1,0 +1,42 @@
+@model IEnumerable<InteractHealthProDatabase.Models.InsuranceClaim>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="form-group row align-items-center px-2">
+    <h2 class="col">All Insurance Claims</h2>
+    <span class="col-auto text-secondary">To create a new insurance claim, navigate to a client's profile page</span>
+    <hr />
+</div>
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Claimref)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OtherClaimRef)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Claimref)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OtherClaimRef)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

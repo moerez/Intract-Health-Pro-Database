@@ -1,0 +1,89 @@
+@model InteractHealthProDatabase.Models.InsuranceClaim
+@using InteractHealthProDatabase.Models.Enums
+
+@{
+    bool isEdit = Model.Id != 0;
+    ViewData["Title"] = isEdit ? "Edit" : "Create";
+
+    List<InsuranceCompany>? icList = ViewBag.InsuranceCompanies as List<InsuranceCompany>;
+    List<SelectListItem> icSelectList = new List<SelectListItem>();
+    if (icList == null) icList = new List<InsuranceCompany>();
+    foreach (InsuranceCompany ic in icList)
+    {
+        icSelectList.Add(new SelectListItem()
+        {
+            Value = ic.Id.ToString(),
+            Text = ic.Title
+        });
+    }
+}
+
+
+<form asp-action="CreateOrEdit" asp-route-clientId="@ViewBag.ClientId">
+    <div class="form-group row align-items-center px-2 py-0">
+        <h1 class="col">@(isEdit ? "Edit" : "New") Insurance Claim</h1>
+        <input type="submit" value='@(isEdit ? "Edit" : "Create")' class="btn btn-primary col-auto mx-2" />
+        <a asp-action="Details" asp-controller="Client" asp-route-id="@ViewBag.ClientId"
+            class="btn btn-danger col-auto">Cancel</a>
+    </div>
+    <hr />
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+
+    <div class="form-group">
+        <label asp-for="SelectedInsuranceCompanyId" class="control-label"></label>
+        @Html.DropDownList("SelectedInsuranceCompanyId", icSelectList, "Please select an insurance company", new
+        {@class = "form-control form-select"})
+        <span asp-validation-for="SelectedInsuranceCompanyId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Claimref" class="control-label"></label>
+        <input asp-for="Claimref" class="form-control" />
+        <span asp-validation-for="Claimref" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="OtherClaimRef" class="control-label"></label>
+        <input asp-for="OtherClaimRef" class="form-control" />
+        <span asp-validation-for="OtherClaimRef" class="text-danger"></span>
+    </div>
+
+</form>
+
+
+@* @{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>InsuranceClaim</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Claimref" class="control-label"></label>
+                <input asp-for="Claimref" class="form-control" />
+                <span asp-validation-for="Claimref" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OtherClaimRef" class="control-label"></label>
+                <input asp-for="OtherClaimRef" class="form-control" />
+                <span asp-validation-for="OtherClaimRef" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div> *@
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

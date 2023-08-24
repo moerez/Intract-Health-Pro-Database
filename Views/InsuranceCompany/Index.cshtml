@@ -1,0 +1,45 @@
+@model IEnumerable<InteractHealthProDatabase.Models.InsuranceCompany>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div>
+<ul class="list-group list-group-horizontal" >
+    <a class="btn btn-light" asp-area="" asp-controller="InsuranceCompany" asp-action="Index">Insurance Company</a>
+    <a class="btn btn-light" asp-area="" asp-controller="InsuranceClaim" asp-action="Index">Insurance Claim</a>
+    <a class="btn btn-light" asp-area="" asp-controller="InsuranceCompanyContact" asp-action="Index">Insurance Company Contact</a>
+</ul>
+</div>
+
+
+<div class="form-group row align-items-center px-2">
+    <h1 class="col">Insurance Companies</h1>
+    <a asp-action="Create" class="btn btn-primary col-auto">Add Company</a>
+    <hr />
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @* <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a> *@
+                <a asp-action="Index" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Title)</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
